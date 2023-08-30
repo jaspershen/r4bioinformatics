@@ -1,14 +1,6 @@
 
 
-# R for Bioinformatics analysis {#r4bioinformatics}
-
-首先从`Markdown`的基础语法开始.
-
-## Markdown语法
-
-markdown语法一般是使用符号转变为特殊格式.这样,看起来markdown文件都是plain text(纯文本),但是渲染之后,就可以得到特殊格式的文件了.
-
-很多语法没有必要记住,只需要记住大概常用的几个就好,遇到不会的,直接google就可以.
+# Modern Statistics for Modern Biology {#biostatistics}
 
 
 ---
