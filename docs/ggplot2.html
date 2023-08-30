@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 8 ggplot2 | R for Bioinformatics project</title>
+<meta name="author" content="Xiaotao Shen">
+<meta name="description" content='推荐查看作者写的英文书: https://ggplot2-book.org/  8.1 安装 install.packages("ggplot2")  8.2 基础知识  8.2.1 ggplot图像的三个元素 每个ggplot都有三个元素组成: 数据(data) 在ggplot2中,数据一般是data frame(数据框). 一系列的美学映射(aesthetic...'>
+<meta name="generator" content="bookdown 0.34 with bs4_book()">
+<meta property="og:title" content="Chapter 8 ggplot2 | R for Bioinformatics project">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://jaspershen.github.io/r4bioinformatics/ggplot2.html">
+<meta property="og:image" content="https://jaspershen.github.io/r4bioinformatics/cover.png">
+<meta property="og:description" content='推荐查看作者写的英文书: https://ggplot2-book.org/  8.1 安装 install.packages("ggplot2")  8.2 基础知识  8.2.1 ggplot图像的三个元素 每个ggplot都有三个元素组成: 数据(data) 在ggplot2中,数据一般是data frame(数据框). 一系列的美学映射(aesthetic...'>
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 8 ggplot2 | R for Bioinformatics project">
+<meta name="twitter:description" content='推荐查看作者写的英文书: https://ggplot2-book.org/  8.1 安装 install.packages("ggplot2")  8.2 基础知识  8.2.1 ggplot图像的三个元素 每个ggplot都有三个元素组成: 数据(data) 在ggplot2中,数据一般是data frame(数据框). 一系列的美学映射(aesthetic...'>
+<meta name="twitter:image" content="https://jaspershen.github.io/r4bioinformatics/cover.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/Poppins-0.4.6/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.5.0/transition.js"></script><script src="libs/bs3compat-0.5.0/tabs.js"></script><script src="libs/bs3compat-0.5.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script><link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<script src="libs/leaflet-1.3.1/leaflet.js"></script><link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+<script src="libs/proj4-2.6.2/proj4.min.js"></script><script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+<script src="libs/leaflet-binding-2.1.2/leaflet.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="libs/datatables-binding-0.28/datatables.js"></script><link href="libs/dt-core-1.13.4/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="libs/dt-core-1.13.4/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="libs/dt-core-1.13.4/js/jquery.dataTables.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">R for Bioinformatics project</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Welcome</a></li>
+<li><a class="" href="r4bioinformatics.html"><span class="header-section-number">2</span> R for Bioinformatics analysis</a></li>
+<li><a class="" href="markdown.html"><span class="header-section-number">3</span> Markdown</a></li>
+<li><a class="" href="rmarkdown.html"><span class="header-section-number">4</span> Rmarkdown</a></li>
+<li><a class="" href="rmarkdown_beyond.html"><span class="header-section-number">5</span> Rmarkdown拓展</a></li>
+<li><a class="" href="git.html"><span class="header-section-number">6</span> Git和github</a></li>
+<li><a class="" href="git_teamwork.html"><span class="header-section-number">7</span> github team work</a></li>
+<li><a class="active" href="ggplot2.html"><span class="header-section-number">8</span> ggplot2</a></li>
+<li><a class="" href="network.html"><span class="header-section-number">9</span> Network分析总结</a></li>
+<li><a class="" href="tidyverse_stringr.html"><span class="header-section-number">10</span> Tidyverse用于数据分析stringr</a></li>
+<li><a class="" href="multiomics.html"><span class="header-section-number">11</span> 多组学分析</a></li>
+<li><a class="" href="regularexpression.html"><span class="header-section-number">12</span> 正则表达式</a></li>
+<li><a class="" href="tidyverse_purrr.html"><span class="header-section-number">13</span> 功能化函数编程purrr</a></li>
+<li><a class="" href="biostatistics.html"><span class="header-section-number">14</span> Modern Statistics for Modern Biology</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/jaspershen/r4bioinformatics">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="ggplot2" class="section level1" number="8">
+<h1>
+<span class="header-section-number">8</span> ggplot2<a class="anchor" aria-label="anchor" href="#ggplot2"><i class="fas fa-link"></i></a>
+</h1>
+<p>推荐查看作者写的英文书:</p>
+<p><a href="https://ggplot2-book.org/" class="uri">https://ggplot2-book.org/</a></p>
+<div id="安装-2" class="section level2" number="8.1">
+<h2>
+<span class="header-section-number">8.1</span> 安装<a class="anchor" aria-label="anchor" href="#%E5%AE%89%E8%A3%85-2"><i class="fas fa-link"></i></a>
+</h2>
+<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"ggplot2"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="基础知识" class="section level2" number="8.2">
+<h2>
+<span class="header-section-number">8.2</span> 基础知识<a class="anchor" aria-label="anchor" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><i class="fas fa-link"></i></a>
+</h2>
+<div id="ggplot图像的三个元素" class="section level3" number="8.2.1">
+<h3>
+<span class="header-section-number">8.2.1</span> ggplot图像的三个元素<a class="anchor" aria-label="anchor" href="#ggplot%E5%9B%BE%E5%83%8F%E7%9A%84%E4%B8%89%E4%B8%AA%E5%85%83%E7%B4%A0"><i class="fas fa-link"></i></a>
+</h3>
+<p>每个<code>ggplot</code>都有三个元素组成:</p>
+<ul>
+<li>数据(data)</li>
+</ul>
+<p>在<code>ggplot2</code>中,数据一般是data frame(数据框).</p>
+<ul>
+<li>一系列的美学映射(aesthetic mappings),将数据的变量和可视化的特征联系起来.</li>
+</ul>
+<p>aesthetic mappings,直译为美学映射.也就是将数据的变量使用哪种图形属性进行表示.比如最为简单的一副散点图,我们可以使用x轴来表示身高,使用y轴表示体重,然后使用每个点的颜色代表性别.</p>
+<ul>
+<li>至少一个图层(layer)用来描述变量如何展示,也就是几何对象(geometric).图层一般使用前缀为<code>geom_</code>的函数进行创建.</li>
+</ul>
+<p>一个简单的例子:</p>
+<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">displ</span>, y <span class="op">=</span> <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="07-ggplot2_files/figure-html/unnamed-chunk-3-1.png" width="100%"></div>
+<p>这幅图中:</p>
+<ol style="list-style-type: decimal">
+<li><p>数据为<code>mpg</code></p></li>
+<li><p>美学映射:<code>displ</code>映射到x轴,<code>hwy</code>映射到y轴.</p></li>
+<li><p>图层:点图.</p></li>
+</ol>
+<p><code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code>函数的前两个参数默认是<code>x</code>和<code>y</code>.</p>
+</div>
+<div id="颜色性状大小和其他的美学属性aesthetic-attributes" class="section level3" number="8.2.2">
+<h3>
+<span class="header-section-number">8.2.2</span> 颜色,性状,大小和其他的美学属性(aesthetic attributes)<a class="anchor" aria-label="anchor" href="#%E9%A2%9C%E8%89%B2%E6%80%A7%E7%8A%B6%E5%A4%A7%E5%B0%8F%E5%92%8C%E5%85%B6%E4%BB%96%E7%9A%84%E7%BE%8E%E5%AD%A6%E5%B1%9E%E6%80%A7aesthetic-attributes"><i class="fas fa-link"></i></a>
+</h3>
+<p>为了在一幅图中将=映射更多的变量,我们可以使用一些其他的美学属性(aesthetic attributes).比如,颜色,性状还有大小.</p>
+<p>比如,将颜色映射到变量<code>class</code>上:</p>
+<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">displ</span>, <span class="va">cty</span>, colour <span class="op">=</span> <span class="va">class</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="07-ggplot2_files/figure-html/unnamed-chunk-4-1.png" width="100%"></div>
+<p>如果想要将某个美学属性设置为固定值,应当在<code>aes</code>函数之外进行设置:</p>
+<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">displ</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"blue"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">displ</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"blue"</span><span class="op">)</span></span></code></pre></div>
+<p><img src="07-ggplot2_files/figure-html/unnamed-chunk-5-1.png" width="50%"><img src="07-ggplot2_files/figure-html/unnamed-chunk-5-2.png" width="50%"></p>
+<p>可以看一下这两幅图的差异.</p>
+</div>
+<div id="分面facetting" class="section level3" number="8.2.3">
+<h3>
+<span class="header-section-number">8.2.3</span> 分面(Facetting)<a class="anchor" aria-label="anchor" href="#%E5%88%86%E9%9D%A2facetting"><i class="fas fa-link"></i></a>
+</h3>
+<p>分面也是一种展示分类变量的方法.</p>
+<p><code>ggplot2</code>中有两种分面方式:<code>grid</code>和<code>wrapped</code>.其中<code>wrapped</code>.其中wrapped更为重要.需要使用<code><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap()</a></code>函数.</p>
+<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">displ</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">class</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="07-ggplot2_files/figure-html/unnamed-chunk-6-1.png" width="100%"></div>
+</div>
+<div id="图形的图层geom" class="section level3" number="8.2.4">
+<h3>
+<span class="header-section-number">8.2.4</span> 图形的图层(geom)<a class="anchor" aria-label="anchor" href="#%E5%9B%BE%E5%BD%A2%E7%9A%84%E5%9B%BE%E5%B1%82geom"><i class="fas fa-link"></i></a>
+</h3>
+<p>图层(geom)就是用来决定变量如何展示在图像上的办法.比如最常见的最简单的点图的图层就是<code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code>.</p>
+<ul>
+<li><p><code>geom_smooth</code>: 对数据进行拟合.</p></li>
+<li><p><code>geom_boxplot</code>:箱形图.</p></li>
+<li><p><code>geom_histogram</code>:对连续变量分布进行描述.</p></li>
+<li><p><code>geom_bar</code>:barplot.</p></li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>在图中添加smooth曲线</li>
+</ol>
+<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">displ</span>, <span class="va">hwy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; `geom_smooth()` using method = 'loess' and formula = 'y ~</span></span>
+<span><span class="co">#&gt; x'</span></span></code></pre></div>
+<div class="inline-figure"><img src="07-ggplot2_files/figure-html/unnamed-chunk-7-1.png" width="100%"></div>
+</div>
+</div>
+<div id="单独几何对象individual-geoms" class="section level2" number="8.3">
+<h2>
+<span class="header-section-number">8.3</span> 单独几何对象(individual geoms)<a class="anchor" aria-label="anchor" href="#%E5%8D%95%E7%8B%AC%E5%87%A0%E4%BD%95%E5%AF%B9%E8%B1%A1individual-geoms"><i class="fas fa-link"></i></a>
+</h2>
+<div id="基础图形" class="section level3" number="8.3.1">
+<h3>
+<span class="header-section-number">8.3.1</span> 基础图形<a class="anchor" aria-label="anchor" href="#%E5%9F%BA%E7%A1%80%E5%9B%BE%E5%BD%A2"><i class="fas fa-link"></i></a>
+</h3>
+<p>如何理解几何对象?可以理解为图形的表现方式.我们平时所说的散点图(scatter plot),箱形图(box plot)或者柱状图(bar plot)其实就是指的不同的几何对象表现方式.</p>
+<p>基础的几何对象都是二维的并且需要<code>x</code>和<code>y</code>轴美学映射.他们也都能够使用颜色(color)和形状(shape)对变量进行映射.</p>
+<ul>
+<li>
+<code><a href="https://ggplot2.tidyverse.org/reference/geom_ribbon.html">geom_area()</a></code>: 该几何对象用来绘制面积图.线条下面使用颜色进行填充.</li>
+</ul>
+<div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span></span>
+<span>  x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">1</span>, <span class="fl">5</span><span class="op">)</span>, </span>
+<span>  y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">4</span>, <span class="fl">6</span><span class="op">)</span>, </span>
+<span>  label <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>,<span class="st">"b"</span>,<span class="st">"c"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">df</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, label <span class="op">=</span> <span class="va">label</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="cn">NULL</span>, y <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">+</span> <span class="co"># Hide axis label</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">12</span><span class="op">)</span><span class="op">)</span> <span class="co"># Shrink plot title</span></span></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">p</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_ribbon.html">geom_area</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"area"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="07-ggplot2_files/figure-html/unnamed-chunk-9-1.png" width="100%"></div>
+<ul>
+<li>
+<code>geom_bar(stat = "identity")</code>: 绘制bar plot.注意我们需要将其中的参数<code>stat</code>设置为<code>identify</code>,因此默认情况下,其会统计x轴变量的个数作为y轴.</li>
+</ul>
+<div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">p</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>stat <span class="op">=</span> <span class="st">'identity'</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"bar"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="07-ggplot2_files/figure-html/unnamed-chunk-10-1.png" width="100%"></div>
+<ul>
+<li>
+<code><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line()</a></code>: 绘制线形图.将点按照从左到右顺序进行连接.<code><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_path()</a></code>函数与<code><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line()</a></code>类似,但是连接线的方式是按照他在数据中的顺序进行连接.</li>
+</ul>
+<div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">p</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"line"</span><span class="op">)</span></span>
+<span><span class="va">p</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_path</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"path"</span><span class="op">)</span></span></code></pre></div>
+<p><img src="07-ggplot2_files/figure-html/unnamed-chunk-11-1.png" width="100%"><img src="07-ggplot2_files/figure-html/unnamed-chunk-11-2.png" width="100%"></p>
+<ul>
+<li>
+<code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code>用来画散点图.所以可以对点设置<code>shape</code>属性.</li>
+</ul>
+<div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">p</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"point"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="07-ggplot2_files/figure-html/unnamed-chunk-12-1.png" width="100%"></div>
+<ul>
+<li>
+<code><a href="https://ggplot2.tidyverse.org/reference/geom_polygon.html">geom_polygon()</a></code>,该函数用来绘制多边形.多边形的每个顶点都需要数据中的单独一行来定义.</li>
+</ul>
+<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">p</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_polygon.html">geom_polygon</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"polygon"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="07-ggplot2_files/figure-html/unnamed-chunk-13-1.png" width="100%"></div>
+<ul>
+<li>
+<code><a href="https://ggplot2.tidyverse.org/reference/geom_tile.html">geom_rect()</a></code>,<code>geom_title()</code>和<code><a href="https://ggplot2.tidyverse.org/reference/geom_tile.html">geom_raster()</a></code>用来绘制长方形(rectangles).其中,<code><a href="https://ggplot2.tidyverse.org/reference/geom_tile.html">geom_rect()</a></code>使用四个参数来确定长方形的四个角(<code>xmin</code>,<code>xmax</code>,<code>ymin</code>和<code>ymax</code>).<code>geom_title()</code>和<code><a href="https://ggplot2.tidyverse.org/reference/geom_tile.html">geom_rect()</a></code>几乎相同,但是使用参数<code>x</code>和<code>y</code>来定义每个长方形的中心,然后使用<code>width</code>和<code>height</code>来定义每个长方形的宽度和高度.<code><a href="https://ggplot2.tidyverse.org/reference/geom_tile.html">geom_raster()</a></code>和<code>geom_title()</code>几乎相同.如果每个长方形的大小都是一致的,那么更推荐使用它,因为速度会快一些.</li>
+</ul>
+<div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">p</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_tile.html">geom_tile</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ggtitle</a></span><span class="op">(</span><span class="st">"raster"</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="07-ggplot2_files/figure-html/unnamed-chunk-14-1.png" width="100%"></div>
+</div>
+</div>
+<div id="复杂几何对象collective-geoms" class="section level2" number="8.4">
+<h2>
+<span class="header-section-number">8.4</span> 复杂几何对象(collective geoms)<a class="anchor" aria-label="anchor" href="#%E5%A4%8D%E6%9D%82%E5%87%A0%E4%BD%95%E5%AF%B9%E8%B1%A1collective-geoms"><i class="fas fa-link"></i></a>
+</h2>
+<p>不知道这个怎么翻译比较恰当.所有的集合对象(geom)都可以简单粗略的分为简单对象和复杂几何对象.对于简单的集合对象来说,数据的每一个观测(也就是一行),只画成一个独立的图形.比如对于散点图,每一行数据,只画一个点.而一个复杂的几何对象(collective geom)则使用几行数据来画出一个图形.这有可能是因为统计,比如boxplot,很多点才画出一个box.也有可能是图像的显示方式决定的,比如对于多边形,只有几个点才能确定一个多边形.</p>
+<p>下面的例子我们使用<code>nlme</code> package的<code>Oxboys</code>数据进行演示.</p>
+<div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="va">Oxboys</span>, package <span class="op">=</span> <span class="st">"nlme"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">Oxboys</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Grouped Data: height ~ age | Subject</span></span>
+<span><span class="co">#&gt;   Subject     age height Occasion</span></span>
+<span><span class="co">#&gt; 1       1 -1.0000  140.5        1</span></span>
+<span><span class="co">#&gt; 2       1 -0.7479  143.4        2</span></span>
+<span><span class="co">#&gt; 3       1 -0.4630  144.8        3</span></span>
+<span><span class="co">#&gt; 4       1 -0.1643  147.1        4</span></span>
+<span><span class="co">#&gt; 5       1 -0.0027  147.7        5</span></span>
+<span><span class="co">#&gt; 6       1  0.2466  150.2        6</span></span></code></pre></div>
+<div id="多个组一个美学属性aesthetic" class="section level3" number="8.4.1">
+<h3>
+<span class="header-section-number">8.4.1</span> 多个组一个美学属性(aesthetic)<a class="anchor" aria-label="anchor" href="#%E5%A4%9A%E4%B8%AA%E7%BB%84%E4%B8%80%E4%B8%AA%E7%BE%8E%E5%AD%A6%E5%B1%9E%E6%80%A7aesthetic"><i class="fas fa-link"></i></a>
+</h3>
+<p>有时候,我们希望将数据分成不同的组别进行画图.但是画出的图都是同样的美学属性.也就是说,你希望对每一个对象进行单独画图.这在一些longitudinal研究中非常常见.比如我们想要看每一个男孩随着时间身高的变化:</p>
+<div class="sourceCode" id="cb131"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">Oxboys</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">age</span>, <span class="va">height</span>, group <span class="op">=</span> <span class="va">Subject</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="07-ggplot2_files/figure-html/unnamed-chunk-16-1.png" width="100%"></div>
+<p>每一条线代表一个男孩,一个对象.如果我们不适用<code>group</code>参数进行设置,那么出来的结果就是下面这样:</p>
+<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">Oxboys</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">age</span>, <span class="va">height</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="07-ggplot2_files/figure-html/unnamed-chunk-17-1.png" width="100%"></div>
+<p>另外还有一个比较有用的参数,如果对于对象并没有一个单独的group进行定义,那么就可以使用<code><a href="https://rdrr.io/r/base/interaction.html">interaction()</a></code>函数进行定义,比如:<code>aes(group = interaction(school_id, student_id))</code>.</p>
+</div>
+<div id="多组并且多个图层layer" class="section level3" number="8.4.2">
+<h3>
+<span class="header-section-number">8.4.2</span> 多组并且多个图层(layer)<a class="anchor" aria-label="anchor" href="#%E5%A4%9A%E7%BB%84%E5%B9%B6%E4%B8%94%E5%A4%9A%E4%B8%AA%E5%9B%BE%E5%B1%82layer"><i class="fas fa-link"></i></a>
+</h3>
+<p>有时候我们还想对每个对象单独画图,但是需要对整体进行总结.这时候我们就需要知道怎么在<code>ggplot2</code>中设置<code>整体数据(global)</code>和<code>特殊数据(specific data)</code>.</p>
+<p>我们看到,我们都需要使用<code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code>参数来创建一个ggplot2图像,在<code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code>函数中设置的数据和参数称之为整体数据和整体参数,这些数据会在所有的图层中都使用.如果想要在不同的图层中使用不同的数据和参数,那么就需要在不同的图层或者说集合对象中设置数据和参数.</p>
+<div class="sourceCode" id="cb133"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">Oxboys</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">age</span>, <span class="va">height</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>group <span class="op">=</span> <span class="va">Subject</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, size <span class="op">=</span> <span class="fl">2</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; `geom_smooth()` using formula = 'y ~ x'</span></span></code></pre></div>
+<div class="inline-figure"><img src="07-ggplot2_files/figure-html/unnamed-chunk-18-1.png" width="100%"></div>
+</div>
+</div>
+<div id="覆盖默认分组" class="section level2" number="8.5">
+<h2>
+<span class="header-section-number">8.5</span> 覆盖默认分组<a class="anchor" aria-label="anchor" href="#%E8%A6%86%E7%9B%96%E9%BB%98%E8%AE%A4%E5%88%86%E7%BB%84"><i class="fas fa-link"></i></a>
+</h2>
+<p>有一些图形的横坐标为非连续变量,但是我们仍然想要画一条线将他们连接起来.比如对于boxplot:</p>
+<div class="sourceCode" id="cb134"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">Oxboys</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">Occasion</span>, <span class="va">height</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="07-ggplot2_files/figure-html/unnamed-chunk-19-1.png" width="100%"></div>
+<p>横坐标是非连续变量,如果我们想使用一条线将所有的人都连接起来该怎么做呢?</p>
+<div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">Oxboys</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">Occasion</span>, <span class="va">height</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"#3366FF"</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="07-ggplot2_files/figure-html/unnamed-chunk-20-1.png" width="100%"></div>
+<p>可以看到上面并不是我们想要的结果,如果想要得到我们想要的结果,需要在<code><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line()</a></code>函数中再次单独定义<code>group</code>.</p>
+<div class="sourceCode" id="cb136"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">Oxboys</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">Occasion</span>, <span class="va">height</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>group <span class="op">=</span> <span class="va">Subject</span><span class="op">)</span>, colour <span class="op">=</span> <span class="st">"#3366FF"</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="07-ggplot2_files/figure-html/unnamed-chunk-21-1.png" width="100%"></div>
+<p>上面是我们想要的结果.</p>
+<div id="将美学属性match到图形对象上" class="section level3" number="8.5.1">
+<h3>
+<span class="header-section-number">8.5.1</span> 将美学属性match到图形对象上<a class="anchor" aria-label="anchor" href="#%E5%B0%86%E7%BE%8E%E5%AD%A6%E5%B1%9E%E6%80%A7match%E5%88%B0%E5%9B%BE%E5%BD%A2%E5%AF%B9%E8%B1%A1%E4%B8%8A"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>,</span>
+<span>                 y <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>,</span>
+<span>                 colour <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">df</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, colour <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">colour</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>group <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>, size <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="07-ggplot2_files/figure-html/unnamed-chunk-22-1.png" width="100%"></div>
+<p>这幅图中,colour是非连续变量.第一个点和第一条线是红色的.第二条线和第二个点事绿色的,第三个点(没有对应的线)则是蓝色的.</p>
+<div class="sourceCode" id="cb138"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">df</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, colour <span class="op">=</span> <span class="va">colour</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>group <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>, size <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="07-ggplot2_files/figure-html/unnamed-chunk-23-1.png" width="100%"></div>
+<p>这幅图中colour是连续的.</p>
+<hr>
+<div id="disqus_thread">
+
+</div>
+<script>
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://r-cookbook-shen.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script><noscript>
+Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+</noscript>
+
+</div>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="git_teamwork.html"><span class="header-section-number">7</span> github team work</a></div>
+<div class="next"><a href="network.html"><span class="header-section-number">9</span> Network分析总结</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#ggplot2"><span class="header-section-number">8</span> ggplot2</a></li>
+<li><a class="nav-link" href="#%E5%AE%89%E8%A3%85-2"><span class="header-section-number">8.1</span> 安装</a></li>
+<li>
+<a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="header-section-number">8.2</span> 基础知识</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#ggplot%E5%9B%BE%E5%83%8F%E7%9A%84%E4%B8%89%E4%B8%AA%E5%85%83%E7%B4%A0"><span class="header-section-number">8.2.1</span> ggplot图像的三个元素</a></li>
+<li><a class="nav-link" href="#%E9%A2%9C%E8%89%B2%E6%80%A7%E7%8A%B6%E5%A4%A7%E5%B0%8F%E5%92%8C%E5%85%B6%E4%BB%96%E7%9A%84%E7%BE%8E%E5%AD%A6%E5%B1%9E%E6%80%A7aesthetic-attributes"><span class="header-section-number">8.2.2</span> 颜色,性状,大小和其他的美学属性(aesthetic attributes)</a></li>
+<li><a class="nav-link" href="#%E5%88%86%E9%9D%A2facetting"><span class="header-section-number">8.2.3</span> 分面(Facetting)</a></li>
+<li><a class="nav-link" href="#%E5%9B%BE%E5%BD%A2%E7%9A%84%E5%9B%BE%E5%B1%82geom"><span class="header-section-number">8.2.4</span> 图形的图层(geom)</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#%E5%8D%95%E7%8B%AC%E5%87%A0%E4%BD%95%E5%AF%B9%E8%B1%A1individual-geoms"><span class="header-section-number">8.3</span> 单独几何对象(individual geoms)</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E5%9B%BE%E5%BD%A2"><span class="header-section-number">8.3.1</span> 基础图形</a></li></ul>
+</li>
+<li>
+<a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%87%A0%E4%BD%95%E5%AF%B9%E8%B1%A1collective-geoms"><span class="header-section-number">8.4</span> 复杂几何对象(collective geoms)</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#%E5%A4%9A%E4%B8%AA%E7%BB%84%E4%B8%80%E4%B8%AA%E7%BE%8E%E5%AD%A6%E5%B1%9E%E6%80%A7aesthetic"><span class="header-section-number">8.4.1</span> 多个组一个美学属性(aesthetic)</a></li>
+<li><a class="nav-link" href="#%E5%A4%9A%E7%BB%84%E5%B9%B6%E4%B8%94%E5%A4%9A%E4%B8%AA%E5%9B%BE%E5%B1%82layer"><span class="header-section-number">8.4.2</span> 多组并且多个图层(layer)</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#%E8%A6%86%E7%9B%96%E9%BB%98%E8%AE%A4%E5%88%86%E7%BB%84"><span class="header-section-number">8.5</span> 覆盖默认分组</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#%E5%B0%86%E7%BE%8E%E5%AD%A6%E5%B1%9E%E6%80%A7match%E5%88%B0%E5%9B%BE%E5%BD%A2%E5%AF%B9%E8%B1%A1%E4%B8%8A"><span class="header-section-number">8.5.1</span> 将美学属性match到图形对象上</a></li></ul>
+</li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/jaspershen/r4bioinformatics/blob/main/07-ggplot2.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/jaspershen/r4bioinformatics/edit/main/07-ggplot2.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>R for Bioinformatics project</strong>" was written by Xiaotao Shen. It was last built on 2020-8-30 and updated on 2023-08-30.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

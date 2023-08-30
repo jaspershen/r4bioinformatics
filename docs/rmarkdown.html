@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 4 Rmarkdown | R for Bioinformatics project</title>
+<meta name="author" content="Xiaotao Shen">
+<meta name="description" content="Rmarkdown是Rstudio公司出品的.所有markdown的语法都支持.但是加入了很多强大的功能,因此可以做更多原生markdown无法完成的任务.成为数据分析以及报告自动化和重复化领域一个非常常用的工具. 可以参考下面的书,是rmarkdown的作者Yihui Xie写的....">
+<meta name="generator" content="bookdown 0.34 with bs4_book()">
+<meta property="og:title" content="Chapter 4 Rmarkdown | R for Bioinformatics project">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://jaspershen.github.io/r4bioinformatics/rmarkdown.html">
+<meta property="og:image" content="https://jaspershen.github.io/r4bioinformatics/cover.png">
+<meta property="og:description" content="Rmarkdown是Rstudio公司出品的.所有markdown的语法都支持.但是加入了很多强大的功能,因此可以做更多原生markdown无法完成的任务.成为数据分析以及报告自动化和重复化领域一个非常常用的工具. 可以参考下面的书,是rmarkdown的作者Yihui Xie写的....">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 4 Rmarkdown | R for Bioinformatics project">
+<meta name="twitter:description" content="Rmarkdown是Rstudio公司出品的.所有markdown的语法都支持.但是加入了很多强大的功能,因此可以做更多原生markdown无法完成的任务.成为数据分析以及报告自动化和重复化领域一个非常常用的工具. 可以参考下面的书,是rmarkdown的作者Yihui Xie写的....">
+<meta name="twitter:image" content="https://jaspershen.github.io/r4bioinformatics/cover.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/Poppins-0.4.6/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.5.0/transition.js"></script><script src="libs/bs3compat-0.5.0/tabs.js"></script><script src="libs/bs3compat-0.5.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script><link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<script src="libs/leaflet-1.3.1/leaflet.js"></script><link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+<script src="libs/proj4-2.6.2/proj4.min.js"></script><script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+<script src="libs/leaflet-binding-2.1.2/leaflet.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="libs/datatables-binding-0.28/datatables.js"></script><link href="libs/dt-core-1.13.4/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="libs/dt-core-1.13.4/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="libs/dt-core-1.13.4/js/jquery.dataTables.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">R for Bioinformatics project</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Welcome</a></li>
+<li><a class="" href="r4bioinformatics.html"><span class="header-section-number">2</span> R for Bioinformatics analysis</a></li>
+<li><a class="" href="markdown.html"><span class="header-section-number">3</span> Markdown</a></li>
+<li><a class="active" href="rmarkdown.html"><span class="header-section-number">4</span> Rmarkdown</a></li>
+<li><a class="" href="rmarkdown_beyond.html"><span class="header-section-number">5</span> Rmarkdown拓展</a></li>
+<li><a class="" href="git.html"><span class="header-section-number">6</span> Git和github</a></li>
+<li><a class="" href="git_teamwork.html"><span class="header-section-number">7</span> github team work</a></li>
+<li><a class="" href="ggplot2.html"><span class="header-section-number">8</span> ggplot2</a></li>
+<li><a class="" href="network.html"><span class="header-section-number">9</span> Network分析总结</a></li>
+<li><a class="" href="tidyverse_stringr.html"><span class="header-section-number">10</span> Tidyverse用于数据分析stringr</a></li>
+<li><a class="" href="multiomics.html"><span class="header-section-number">11</span> 多组学分析</a></li>
+<li><a class="" href="regularexpression.html"><span class="header-section-number">12</span> 正则表达式</a></li>
+<li><a class="" href="tidyverse_purrr.html"><span class="header-section-number">13</span> 功能化函数编程purrr</a></li>
+<li><a class="" href="biostatistics.html"><span class="header-section-number">14</span> Modern Statistics for Modern Biology</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/jaspershen/r4bioinformatics">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="rmarkdown" class="section level1" number="4">
+<h1>
+<span class="header-section-number">4</span> Rmarkdown<a class="anchor" aria-label="anchor" href="#rmarkdown"><i class="fas fa-link"></i></a>
+</h1>
+<p>Rmarkdown是Rstudio公司出品的.所有markdown的语法都支持.但是加入了很多强大的功能,因此可以做更多原生markdown无法完成的任务.成为数据分析以及报告自动化和重复化领域一个非常常用的工具.</p>
+<p>可以参考下面的书,是rmarkdown的作者Yihui Xie写的.</p>
+<p><a href="https://bookdown.org/yihui/rmarkdown/installation.html" class="uri">https://bookdown.org/yihui/rmarkdown/installation.html</a></p>
+<p>也可以查看这个视频简介.</p>
+<iframe src="https://player.vimeo.com/video/178485416?color=428bca&amp;title=0&amp;byline=0&amp;portrait=0" width="100%" height="100%" frameborder="0" allow="autoplay; fullscreen" allowfullscreen>
+</iframe>
+<p>
+<a href="https://vimeo.com/178485416">What is R Markdown?</a> from <a href="https://vimeo.com/rstudioinc">RStudio, Inc.</a> on <a href="https://vimeo.com">Vimeo</a>.
+</p>
+<div id="安装" class="section level2" number="4.1">
+<h2>
+<span class="header-section-number">4.1</span> 安装<a class="anchor" aria-label="anchor" href="#%E5%AE%89%E8%A3%85"><i class="fas fa-link"></i></a>
+</h2>
+<p>需要安装R和Rstudio.</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb45-1"><a href="rmarkdown.html#cb45-1" tabindex="-1"></a>install.packages('rmarkdown')</span></code></pre></div>
+<p>如果想要转换为PDF格式,需要安装LaTex.</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb46-1"><a href="rmarkdown.html#cb46-1" tabindex="-1"></a>install.packages("tinytex")</span>
+<span id="cb46-2"><a href="rmarkdown.html#cb46-2" tabindex="-1"></a>tinytex::install_tinytex()  # install TinyTeX</span></code></pre></div>
+</div>
+<div id="rmarkdown结构" class="section level2" number="4.2">
+<h2>
+<span class="header-section-number">4.2</span> Rmarkdown结构<a class="anchor" aria-label="anchor" href="#rmarkdown%E7%BB%93%E6%9E%84"><i class="fas fa-link"></i></a>
+</h2>
+<p>Rmarkdown可以分为三部分,分别是<code>YAML</code>, <code>文本部分</code>以及<code>代码块</code>.</p>
+<ol style="list-style-type: decimal">
+<li>YAML</li>
+</ol>
+<p>YAML在每个rmakdown文件的最开头,定义了Markdown文件的很多性质.YAML是指YAin’t Markup Language, <a href="https://en.wikipedia.org/wiki/YAML" class="uri">https://en.wikipedia.org/wiki/YAML</a>.</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb47-1"><a href="rmarkdown.html#cb47-1" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb47-2"><a href="rmarkdown.html#cb47-2" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Hello R Markdown"</span></span>
+<span id="cb47-3"><a href="rmarkdown.html#cb47-3" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Awesome Me"</span></span>
+<span id="cb47-4"><a href="rmarkdown.html#cb47-4" tabindex="-1"></a><span class="an">date:</span><span class="co"> "2018-02-14"</span></span>
+<span id="cb47-5"><a href="rmarkdown.html#cb47-5" tabindex="-1"></a><span class="an">output:</span><span class="co"> html_document</span></span>
+<span id="cb47-6"><a href="rmarkdown.html#cb47-6" tabindex="-1"></a><span class="co">---</span></span></code></pre></div>
+<p>YAML用<code>---</code>包围起来.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>文本部分</li>
+</ol>
+<p>YAML下面就是文本部分,其实也就是Markdown.</p>
+<ol start="3" style="list-style-type: decimal">
+<li>代码块</li>
+</ol>
+<p>在Rmarkdown中,可以插入可以执行的代码块,不近包括R,还包括pyton,SQL等等.</p>
+<div class="inline-figure"><img src="images/Screen%20Shot%202020-03-13%20at%2010.48.36%20PM.png"></div>
+<p>上图显示的就是一个完整的Rmarkdown文件.</p>
+</div>
+<div id="yaml" class="section level2" number="4.3">
+<h2>
+<span class="header-section-number">4.3</span> YAML<a class="anchor" aria-label="anchor" href="#yaml"><i class="fas fa-link"></i></a>
+</h2>
+<p><code>YAML</code>是在Rmakdown中控制很多内容的部分.通过参数设置,可以控制比如输入格式,输出主题等等.</p>
+</div>
+<div id="r代码块" class="section level2" number="4.4">
+<h2>
+<span class="header-section-number">4.4</span> R代码块<a class="anchor" aria-label="anchor" href="#r%E4%BB%A3%E7%A0%81%E5%9D%97"><i class="fas fa-link"></i></a>
+</h2>
+<p>R代码块的格式为:</p>
+<p>如何设置格式文件,可以参考下面文章:</p>
+<p><a href="https://rmarkdown.rstudio.com/articles_docx.html" class="uri">https://rmarkdown.rstudio.com/articles_docx.html</a></p>
+<p>或者看下面的视频:</p>
+<iframe src="https://player.vimeo.com/video/110804387" width="640" height="400" frameborder="0" allow="autoplay; fullscreen" allowfullscreen>
+</iframe>
+<p>
+<a href="https://vimeo.com/110804387">Create A MS Word Template for R Markdown</a> from <a href="https://vimeo.com/yihui">Yihui Xie</a> on <a href="https://vimeo.com">Vimeo</a>.
+</p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="markdown.html"><span class="header-section-number">3</span> Markdown</a></div>
+<div class="next"><a href="rmarkdown_beyond.html"><span class="header-section-number">5</span> Rmarkdown拓展</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#rmarkdown"><span class="header-section-number">4</span> Rmarkdown</a></li>
+<li><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="header-section-number">4.1</span> 安装</a></li>
+<li><a class="nav-link" href="#rmarkdown%E7%BB%93%E6%9E%84"><span class="header-section-number">4.2</span> Rmarkdown结构</a></li>
+<li><a class="nav-link" href="#yaml"><span class="header-section-number">4.3</span> YAML</a></li>
+<li><a class="nav-link" href="#r%E4%BB%A3%E7%A0%81%E5%9D%97"><span class="header-section-number">4.4</span> R代码块</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/jaspershen/r4bioinformatics/blob/main/03-rmarkdown.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/jaspershen/r4bioinformatics/edit/main/03-rmarkdown.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>R for Bioinformatics project</strong>" was written by Xiaotao Shen. It was last built on 2020-8-30 and updated on 2023-08-30.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

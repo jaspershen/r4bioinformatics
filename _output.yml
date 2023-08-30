@@ -2,7 +2,20 @@ bookdown::bs4_book:
   css: style.css
   theme:
     primary: "#096B72"
-  repo: https://github.com/rstudio/bookdown-demo
+    base_font: 
+      google: Poppins
+    heading_font:
+      google:
+        family: Poppins
+        wght: 200
+    code_font:
+      google: 
+        # arguments to sass::font_google() 
+        family: Poppins
+        local: false
+  repo: 
+    base: https://github.com/jaspershen/r4bioinformatics
+    branch: main
 bookdown::pdf_book:
   includes:
     in_header: preamble.tex

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 5 Rmarkdown拓展 | R for Bioinformatics project</title>
+<meta name="author" content="Xiaotao Shen">
+<meta name="description" content="Yihui Xie以及Rstudio基于Rmarkdown写了好几个用来创建网站等的包.  5.1 Blogdown 使用基于Rmarkdown的包blogdown可以很方便的创建网站.比如一个个人网站.关于详细的blogdown,可以参考下面的网址: https://bookdown.org/yihui/blogdown/  5.1.1 需要准备的东西 Rstudio和R...">
+<meta name="generator" content="bookdown 0.34 with bs4_book()">
+<meta property="og:title" content="Chapter 5 Rmarkdown拓展 | R for Bioinformatics project">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://jaspershen.github.io/r4bioinformatics/rmarkdown_beyond.html">
+<meta property="og:image" content="https://jaspershen.github.io/r4bioinformatics/cover.png">
+<meta property="og:description" content="Yihui Xie以及Rstudio基于Rmarkdown写了好几个用来创建网站等的包.  5.1 Blogdown 使用基于Rmarkdown的包blogdown可以很方便的创建网站.比如一个个人网站.关于详细的blogdown,可以参考下面的网址: https://bookdown.org/yihui/blogdown/  5.1.1 需要准备的东西 Rstudio和R...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 5 Rmarkdown拓展 | R for Bioinformatics project">
+<meta name="twitter:description" content="Yihui Xie以及Rstudio基于Rmarkdown写了好几个用来创建网站等的包.  5.1 Blogdown 使用基于Rmarkdown的包blogdown可以很方便的创建网站.比如一个个人网站.关于详细的blogdown,可以参考下面的网址: https://bookdown.org/yihui/blogdown/  5.1.1 需要准备的东西 Rstudio和R...">
+<meta name="twitter:image" content="https://jaspershen.github.io/r4bioinformatics/cover.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/Poppins-0.4.6/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.5.0/transition.js"></script><script src="libs/bs3compat-0.5.0/tabs.js"></script><script src="libs/bs3compat-0.5.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/htmlwidgets-1.6.2/htmlwidgets.js"></script><link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<script src="libs/leaflet-1.3.1/leaflet.js"></script><link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+<script src="libs/proj4-2.6.2/proj4.min.js"></script><script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+<script src="libs/leaflet-binding-2.1.2/leaflet.js"></script><link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="libs/datatables-binding-0.28/datatables.js"></script><link href="libs/dt-core-1.13.4/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="libs/dt-core-1.13.4/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="libs/dt-core-1.13.4/js/jquery.dataTables.min.js"></script><link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">R for Bioinformatics project</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> Welcome</a></li>
+<li><a class="" href="r4bioinformatics.html"><span class="header-section-number">2</span> R for Bioinformatics analysis</a></li>
+<li><a class="" href="markdown.html"><span class="header-section-number">3</span> Markdown</a></li>
+<li><a class="" href="rmarkdown.html"><span class="header-section-number">4</span> Rmarkdown</a></li>
+<li><a class="active" href="rmarkdown_beyond.html"><span class="header-section-number">5</span> Rmarkdown拓展</a></li>
+<li><a class="" href="git.html"><span class="header-section-number">6</span> Git和github</a></li>
+<li><a class="" href="git_teamwork.html"><span class="header-section-number">7</span> github team work</a></li>
+<li><a class="" href="ggplot2.html"><span class="header-section-number">8</span> ggplot2</a></li>
+<li><a class="" href="network.html"><span class="header-section-number">9</span> Network分析总结</a></li>
+<li><a class="" href="tidyverse_stringr.html"><span class="header-section-number">10</span> Tidyverse用于数据分析stringr</a></li>
+<li><a class="" href="multiomics.html"><span class="header-section-number">11</span> 多组学分析</a></li>
+<li><a class="" href="regularexpression.html"><span class="header-section-number">12</span> 正则表达式</a></li>
+<li><a class="" href="tidyverse_purrr.html"><span class="header-section-number">13</span> 功能化函数编程purrr</a></li>
+<li><a class="" href="biostatistics.html"><span class="header-section-number">14</span> Modern Statistics for Modern Biology</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/jaspershen/r4bioinformatics">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="rmarkdown_beyond" class="section level1" number="5">
+<h1>
+<span class="header-section-number">5</span> Rmarkdown拓展<a class="anchor" aria-label="anchor" href="#rmarkdown_beyond"><i class="fas fa-link"></i></a>
+</h1>
+<p>Yihui Xie以及Rstudio基于Rmarkdown写了好几个用来创建网站等的包.</p>
+<div id="blogdown" class="section level2" number="5.1">
+<h2>
+<span class="header-section-number">5.1</span> Blogdown<a class="anchor" aria-label="anchor" href="#blogdown"><i class="fas fa-link"></i></a>
+</h2>
+<p>使用基于Rmarkdown的包<code>blogdown</code>可以很方便的创建网站.比如一个个人网站.关于详细的blogdown,可以参考下面的网址:</p>
+<p><a href="https://bookdown.org/yihui/blogdown/" class="uri">https://bookdown.org/yihui/blogdown/</a></p>
+<div id="需要准备的东西" class="section level3" number="5.1.1">
+<h3>
+<span class="header-section-number">5.1.1</span> 需要准备的东西<a class="anchor" aria-label="anchor" href="#%E9%9C%80%E8%A6%81%E5%87%86%E5%A4%87%E7%9A%84%E4%B8%9C%E8%A5%BF"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li><p>Rstudio和R</p></li>
+<li><p>本地安装git和一个github账户</p></li>
+</ul>
+<p>需要确保已经将ssh key pub添加到了github账户中.详细信息可以参考:</p>
+</div>
+<div id="安装-1" class="section level3" number="5.1.2">
+<h3>
+<span class="header-section-number">5.1.2</span> 安装<a class="anchor" aria-label="anchor" href="#%E5%AE%89%E8%A3%85-1"><i class="fas fa-link"></i></a>
+</h3>
+<p>安装<code>blogdown</code>包.在R中.</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb48-1"><a href="rmarkdown_beyond.html#cb48-1" tabindex="-1"></a><span class="fu">## Install from CRAN</span></span>
+<span id="cb48-2"><a href="rmarkdown_beyond.html#cb48-2" tabindex="-1"></a>install.packages('blogdown')</span></code></pre></div>
+<p><code>blogdown</code>是基于<code>Hugo</code>的,所以需要安装Hugo.</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb49-1"><a href="rmarkdown_beyond.html#cb49-1" tabindex="-1"></a>blogdown::install_hugo()</span></code></pre></div>
+</div>
+<div id="创建项目" class="section level3" number="5.1.3">
+<h3>
+<span class="header-section-number">5.1.3</span> 创建项目<a class="anchor" aria-label="anchor" href="#%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE"><i class="fas fa-link"></i></a>
+</h3>
+<div class="inline-figure"><img src="images/Screen%20Shot%202020-03-15%20at%2011.08.43%20AM.png"></div>
+<p>推荐使用这个主题:gcushen/hugo-academic</p>
+<p>也可以使用下面的代码:</p>
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">blogdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/blogdown/reference/hugo_cmd.html">new_site</a></span><span class="op">(</span>theme <span class="op">=</span> <span class="st">'gcushen/hugo-academic'</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div id="预览" class="section level3" number="5.1.4">
+<h3>
+<span class="header-section-number">5.1.4</span> 预览<a class="anchor" aria-label="anchor" href="#%E9%A2%84%E8%A7%88"><i class="fas fa-link"></i></a>
+</h3>
+<p>项目建好之后,就会有一个demo的网站在.输入代码预览网站:</p>
+<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">blogdown</span><span class="fu">:::</span><span class="fu"><a href="https://pkgs.rstudio.com/blogdown/reference/serve_site.html">serve_site</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="inline-figure"><img src="images/Screen%20Shot%202020-03-15%20at%201.19.51%20PM.png"></div>
+</div>
+<div id="使用rstudio-ide来管理网站" class="section level3" number="5.1.5">
+<h3>
+<span class="header-section-number">5.1.5</span> 使用Rstudio IDE来管理网站<a class="anchor" aria-label="anchor" href="#%E4%BD%BF%E7%94%A8rstudio-ide%E6%9D%A5%E7%AE%A1%E7%90%86%E7%BD%91%E7%AB%99"><i class="fas fa-link"></i></a>
+</h3>
+<div class="inline-figure"><img src="images/Screen%20Shot%202020-03-15%20at%2012.08.21%20PM.png"></div>
+<p>Rstudio的<code>Addins</code>中有很多的功能可以方便的用来管理网站.当然他们也都有对应的命令行工具.</p>
+<ul>
+<li><p><code>Serve Site</code>:对应着<code><a href="https://pkgs.rstudio.com/blogdown/reference/serve_site.html">blogdown::serve_site()</a></code>.用来对网站进行build,并进行预览.</p></li>
+<li><p><code>New Post</code>:对应着<code><a href="https://pkgs.rstudio.com/blogdown/reference/hugo_cmd.html">blogdown::new_post()</a></code>,用来添加新的post.</p></li>
+</ul>
+<p>其他的功能直接可以打开看看,</p>
+</div>
+<div id="更改为其他的主题" class="section level3" number="5.1.6">
+<h3>
+<span class="header-section-number">5.1.6</span> 更改为其他的主题<a class="anchor" aria-label="anchor" href="#%E6%9B%B4%E6%94%B9%E4%B8%BA%E5%85%B6%E4%BB%96%E7%9A%84%E4%B8%BB%E9%A2%98"><i class="fas fa-link"></i></a>
+</h3>
+<p>Hugo有很多主题,都是别人已经做好的,可以直接使用.</p>
+<p>官网如下:</p>
+<p><a href="https://themes.gohugo.io/" class="uri">https://themes.gohugo.io/</a></p>
+<p>找到自己喜欢以及合适的主题之后,找到该主题所在的github用户名和repo名字,然后使用下面的代码进行安装:</p>
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">blogdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/blogdown/reference/install_theme.html">install_theme</a></span><span class="op">(</span><span class="st">'user.name/repo.name'</span><span class="op">)</span></span></code></pre></div>
+<p>比如我们使用下面的主题:</p>
+<p><a href="https://github.com/kakawait/hugo-tranquilpeak-theme" class="uri">https://github.com/kakawait/hugo-tranquilpeak-theme</a></p>
+<p>最好的办法其实是直接新建一个网站,然后使用那个主题,因为不同的主题的配置等等都是非常不同的.</p>
+</div>
+<div id="发布自己的网站" class="section level3" number="5.1.7">
+<h3>
+<span class="header-section-number">5.1.7</span> 发布自己的网站<a class="anchor" aria-label="anchor" href="#%E5%8F%91%E5%B8%83%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E7%AB%99"><i class="fas fa-link"></i></a>
+</h3>
+<p>在本地创建好自己的网站之后,下面需要做的就是将自己的网站发布在网上,使别人可以通过url看到自己的网站.</p>
+<p>推荐将网站所有内容托管在github上,然后发布在netlify上.</p>
+<p>打开netlify网站(<a href="https://www.netlify.com/" class="uri">https://www.netlify.com/</a>),可以直接使用github账号登陆.</p>
+<ol style="list-style-type: decimal">
+<li>生成发布文件</li>
+</ol>
+<p>输入下列代码:</p>
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">blogdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/blogdown/reference/hugo_cmd.html">hugo_build</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>得到下面结果:</p>
+<div class="inline-figure"><img src="images/Screen%20Shot%202020-03-15%20at%201.22.59%20PM.png"></div>
+<p>然后在目录下有<code>public</code>文件夹,说明已经准备好.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>登陆netlify网站</li>
+</ol>
+<p>登陆netlify网站,可以使用github账号登陆.</p>
+<p>然后将<code>public</code>文件夹直接拖动到提示区域即可.</p>
+<div class="inline-figure"><img src="images/Screen%20Shot%202020-03-15%20at%201.27.38%20PM.png"></div>
+<p>然后就会自动发布(deployment).</p>
+<p>这时候他会自动给一个网址(url),比如https://quirky-austin-f482bf.netlify.com/.</p>
+<ol start="3" style="list-style-type: decimal">
+<li>绑定github自动发布</li>
+</ol>
+<p>每次更新之后,我们都需要将<code>public</code>文件夹手动拖动到netlify中,有些麻烦.可以将我们的网站托管在github上,然后将github repo和netlify绑定,从而在每次更新并同步到github之后,让netlify自动更新发布.</p>
+<p>首先在github上创建和本地仓库同名的远程仓库.</p>
+<p>然后参考git部分的内容,先创建远程仓库并提交,在terminal中:</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb54-1"><a href="rmarkdown_beyond.html#cb54-1" tabindex="-1"></a>git config user.name</span>
+<span id="cb54-2"><a href="rmarkdown_beyond.html#cb54-2" tabindex="-1"></a>git config user.email</span>
+<span id="cb54-3"><a href="rmarkdown_beyond.html#cb54-3" tabindex="-1"></a>git init</span>
+<span id="cb54-4"><a href="rmarkdown_beyond.html#cb54-4" tabindex="-1"></a>git add .</span>
+<span id="cb54-5"><a href="rmarkdown_beyond.html#cb54-5" tabindex="-1"></a>git commit -m 'new website'</span></code></pre></div>
+<p>然后推送到远程仓库:</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb55-1"><a href="rmarkdown_beyond.html#cb55-1" tabindex="-1"></a>remote add origin git@github_shenxt:shenxt/ds4omics</span>
+<span id="cb55-2"><a href="rmarkdown_beyond.html#cb55-2" tabindex="-1"></a>git remote -v</span>
+<span id="cb55-3"><a href="rmarkdown_beyond.html#cb55-3" tabindex="-1"></a>git push -u origin master#第一次推送</span></code></pre></div>
+<p>这时候可以看到,本地仓库内容已经被推送到远程仓库了.</p>
+<p>设置netlify:</p>
+<p>在netlify,点击<code>Site Setting</code> -&gt; <code>Build&amp;deploy</code> -&gt; <code>Link site to git</code></p>
+<p>然后按照提示一步步进行即可.</p>
+<p>另外,需要设置下面内容:</p>
+<div class="inline-figure"><img src="images/Screen%20Shot%202020-03-15%20at%202.00.24%20PM.png"></div>
+<p>hugo版本可以在R中观察.</p>
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">blogdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/blogdown/reference/hugo_cmd.html">hugo_version</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>这样,以后再进行改动,然后使用git将其推送到github,netlify就会自动同步并发布.</p>
+<ol start="4" style="list-style-type: decimal">
+<li>设置自定义域名</li>
+</ol>
+<p>我们可能需要设置自己的域名.</p>
+<p>如果没有买域名,那就只能使用netlify而二级域名,二级域名可以进行设置.</p>
+<p>在<code>site sitting</code>-&gt;<code>site information</code>中,点击<code>change site name</code>,就可以设置自己的二级域名.比如我们这里改成<code>ds4omics.netlify.com</code>.</p>
+<p>如果我们购买了自己的域名,可以在<a href="https://www.godaddy.com/offers/domains/noprice?isc=goodbr01&amp;gclid=Cj0KCQjwpLfzBRCRARIsAHuj6qXFolBcCQVKrRZVwzZkywSjzrq1XCq1UoWMls8jdYX-gnfVSNyhiVgaAuKCEALw_wcB&amp;gclsrc=aw.ds">goDaddy</a>购买.</p>
+<p>然后也可以设置为自己的域名.</p>
+<p>在netlify主页上,点击<code>Set up a custom domain</code>.然后填入自己购买的域名,比如<code>shenxt.me</code>,然后按照提示一步步进行即可.</p>
+</div>
+<div id="发布到github上" class="section level3" number="5.1.8">
+<h3>
+<span class="header-section-number">5.1.8</span> 发布到github上<a class="anchor" aria-label="anchor" href="#%E5%8F%91%E5%B8%83%E5%88%B0github%E4%B8%8A"><i class="fas fa-link"></i></a>
+</h3>
+<p>也可以将网站发布到github pages上.</p>
+<p>具体可以参考https://bookdown.org/yihui/blogdown/github-pages.html.</p>
+<p>下图是我自己的个人博客,也是使用blogdown建立的.</p>
+<div class="inline-figure"><img src="images/Screen%20Shot%202020-03-14%20at%2010.52.48%20PM.png"></div>
+</div>
+</div>
+<div id="bookdown" class="section level2" number="5.2">
+<h2>
+<span class="header-section-number">5.2</span> Bookdown<a class="anchor" aria-label="anchor" href="#bookdown"><i class="fas fa-link"></i></a>
+</h2>
+<div class="inline-figure"><img src="images/Screen%20Shot%202020-03-14%20at%2010.54.49%20PM.png"></div>
+</div>
+<div id="presentation" class="section level2" number="5.3">
+<h2>
+<span class="header-section-number">5.3</span> Presentation<a class="anchor" aria-label="anchor" href="#presentation"><i class="fas fa-link"></i></a>
+</h2>
+<div class="inline-figure"><img src="images/Screen%20Shot%202020-03-14%20at%2011.00.46%20PM.png"></div>
+<div class="inline-figure"><img src="images/Screen%20Shot%202020-03-14%20at%2011.01.20%20PM.png"></div>
+</div>
+<div id="pagedown" class="section level2" number="5.4">
+<h2>
+<span class="header-section-number">5.4</span> Pagedown<a class="anchor" aria-label="anchor" href="#pagedown"><i class="fas fa-link"></i></a>
+</h2>
+<div class="inline-figure"><img src="images/Screen%20Shot%202020-03-14%20at%2011.03.05%20PM.png"></div>
+</div>
+<div id="pkgdown" class="section level2" number="5.5">
+<h2>
+<span class="header-section-number">5.5</span> Pkgdown<a class="anchor" aria-label="anchor" href="#pkgdown"><i class="fas fa-link"></i></a>
+</h2>
+<div class="inline-figure"><img src="images/Screen%20Shot%202020-03-14%20at%2011.03.59%20PM.png"></div>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="rmarkdown.html"><span class="header-section-number">4</span> Rmarkdown</a></div>
+<div class="next"><a href="git.html"><span class="header-section-number">6</span> Git和github</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#rmarkdown_beyond"><span class="header-section-number">5</span> Rmarkdown拓展</a></li>
+<li>
+<a class="nav-link" href="#blogdown"><span class="header-section-number">5.1</span> Blogdown</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#%E9%9C%80%E8%A6%81%E5%87%86%E5%A4%87%E7%9A%84%E4%B8%9C%E8%A5%BF"><span class="header-section-number">5.1.1</span> 需要准备的东西</a></li>
+<li><a class="nav-link" href="#%E5%AE%89%E8%A3%85-1"><span class="header-section-number">5.1.2</span> 安装</a></li>
+<li><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="header-section-number">5.1.3</span> 创建项目</a></li>
+<li><a class="nav-link" href="#%E9%A2%84%E8%A7%88"><span class="header-section-number">5.1.4</span> 预览</a></li>
+<li><a class="nav-link" href="#%E4%BD%BF%E7%94%A8rstudio-ide%E6%9D%A5%E7%AE%A1%E7%90%86%E7%BD%91%E7%AB%99"><span class="header-section-number">5.1.5</span> 使用Rstudio IDE来管理网站</a></li>
+<li><a class="nav-link" href="#%E6%9B%B4%E6%94%B9%E4%B8%BA%E5%85%B6%E4%BB%96%E7%9A%84%E4%B8%BB%E9%A2%98"><span class="header-section-number">5.1.6</span> 更改为其他的主题</a></li>
+<li><a class="nav-link" href="#%E5%8F%91%E5%B8%83%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E7%AB%99"><span class="header-section-number">5.1.7</span> 发布自己的网站</a></li>
+<li><a class="nav-link" href="#%E5%8F%91%E5%B8%83%E5%88%B0github%E4%B8%8A"><span class="header-section-number">5.1.8</span> 发布到github上</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#bookdown"><span class="header-section-number">5.2</span> Bookdown</a></li>
+<li><a class="nav-link" href="#presentation"><span class="header-section-number">5.3</span> Presentation</a></li>
+<li><a class="nav-link" href="#pagedown"><span class="header-section-number">5.4</span> Pagedown</a></li>
+<li><a class="nav-link" href="#pkgdown"><span class="header-section-number">5.5</span> Pkgdown</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/jaspershen/r4bioinformatics/blob/main/04-rmarkdown_beyond.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/jaspershen/r4bioinformatics/edit/main/04-rmarkdown_beyond.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>R for Bioinformatics project</strong>" was written by Xiaotao Shen. It was last built on 2020-8-30 and updated on 2023-08-30.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>
