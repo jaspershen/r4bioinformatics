@@ -2,6 +2,8 @@
 knitr::opts_chunk$set(out.width = "100%")
 ```
 
+# (PART) Git {.unnumbered}
+
 # Git和github {#git}
 
 git是版本控制系统,而github是开源代码托管平台,提供的是基于git的开源代码托管服务.对于一个团队来说,即使没有github,也可以通过自己搭建git服务器来进行代码的管理,甚至还有一些其他的基于git的代码托管平台使用,比如gitlab,gitee(码云)等.

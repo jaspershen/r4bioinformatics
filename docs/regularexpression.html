@@ -55,18 +55,23 @@
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html"><span class="header-section-number">1</span> Welcome</a></li>
+<li class="book-part">Project organization</li>
 <li><a class="" href="r4bioinformatics.html"><span class="header-section-number">2</span> R for Bioinformatics analysis</a></li>
+<li class="book-part">Markdown</li>
 <li><a class="" href="markdown.html"><span class="header-section-number">3</span> Markdown</a></li>
 <li><a class="" href="rmarkdown.html"><span class="header-section-number">4</span> Rmarkdown</a></li>
 <li><a class="" href="rmarkdown_beyond.html"><span class="header-section-number">5</span> Rmarkdown拓展</a></li>
+<li class="book-part">Git</li>
 <li><a class="" href="git.html"><span class="header-section-number">6</span> Git和github</a></li>
 <li><a class="" href="git_teamwork.html"><span class="header-section-number">7</span> github team work</a></li>
+<li class="book-part">Data visulization</li>
 <li><a class="" href="ggplot2.html"><span class="header-section-number">8</span> ggplot2</a></li>
 <li><a class="" href="network.html"><span class="header-section-number">9</span> Network分析总结</a></li>
 <li><a class="" href="tidyverse_stringr.html"><span class="header-section-number">10</span> Tidyverse用于数据分析stringr</a></li>
-<li><a class="" href="multiomics.html"><span class="header-section-number">11</span> 多组学分析</a></li>
+<li><a class="" href="tidyverse_purrr.html"><span class="header-section-number">11</span> 功能化函数编程purrr</a></li>
 <li><a class="active" href="regularexpression.html"><span class="header-section-number">12</span> 正则表达式</a></li>
-<li><a class="" href="tidyverse_purrr.html"><span class="header-section-number">13</span> 功能化函数编程purrr</a></li>
+<li class="book-part">Bioinformatics</li>
+<li><a class="" href="multiomics.html"><span class="header-section-number">13</span> 多组学分析</a></li>
 <li><a class="" href="biostatistics.html"><span class="header-section-number">14</span> Modern Statistics for Modern Biology</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
@@ -252,7 +257,7 @@
 <p>以固定要求开头的正则表达式是<code>^</code>,比如我们要查找那些以字母a开头的字符串,就可以写作:</p>
 <pre class="markdonw"><code>'^a'</code></pre>
 <p>在R语言中:</p>
-<div class="sourceCode" id="cb195"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb186"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/grep.html">grep</a></span><span class="op">(</span>pattern <span class="op">=</span> <span class="st">"^a"</span>, x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"abc"</span>, <span class="st">"bcd"</span>, <span class="st">"cde"</span>, <span class="st">"ade"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 1 4</span></span></code></pre></div>
 </div>
@@ -263,7 +268,7 @@
 <p>以固定要求结尾的正则表达式是<code>$</code>,比如我们要查找那些以字母a结尾的字符串,就可以写作:</p>
 <pre class="markdonw"><code>'a$'</code></pre>
 <p>在R语言中:</p>
-<div class="sourceCode" id="cb197"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb188"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/grep.html">grep</a></span><span class="op">(</span>pattern <span class="op">=</span> <span class="st">"a$"</span>, x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"abc"</span>, <span class="st">"bcd"</span>, <span class="st">"cde"</span>, <span class="st">"ada"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 4</span></span></code></pre></div>
 </div>
@@ -341,7 +346,7 @@
 </h2>
 <p>如果需要将某个对象最为整体进行匹配,一般是使用小括号将其括起来.</p>
 <p>比如:</p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb198-1"><a href="regularexpression.html#cb198-1" tabindex="-1"></a>(ab|d)e</span></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb189-1"><a href="regularexpression.html#cb189-1" tabindex="-1"></a>(ab|d)e</span></code></pre></div>
 <p>小括号中就代表一个整体,也即是<code>ab</code>或者<code>d</code>然后后面带着<code>e</code>.</p>
 </div>
 <div id="反义" class="section level2" number="12.7">
@@ -408,9 +413,12 @@ Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">
 
 </div>
 </div>
+
+
+
   <div class="chapter-nav">
-<div class="prev"><a href="multiomics.html"><span class="header-section-number">11</span> 多组学分析</a></div>
-<div class="next"><a href="tidyverse_purrr.html"><span class="header-section-number">13</span> 功能化函数编程purrr</a></div>
+<div class="prev"><a href="tidyverse_purrr.html"><span class="header-section-number">11</span> 功能化函数编程purrr</a></div>
+<div class="next"><a href="multiomics.html"><span class="header-section-number">13</span> 多组学分析</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
@@ -431,8 +439,8 @@ Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/jaspershen/r4bioinformatics/blob/main/12-regular_regression.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/jaspershen/r4bioinformatics/edit/main/12-regular_regression.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/jaspershen/r4bioinformatics/blob/main/11-regular_regression.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/jaspershen/r4bioinformatics/edit/main/11-regular_regression.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>

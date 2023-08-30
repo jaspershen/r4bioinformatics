@@ -1,6 +1,6 @@
-```{r, include = FALSE}
-knitr::opts_chunk$set(out.width = "100%", warning = FALSE)
-```
+
+
+# (PART) Bioinformatics {.unnumbered}
 
 # 多组学分析 {#multiomics}
 
@@ -93,7 +93,8 @@ TOM值的取值范围也是0-1.TOM值也就是WGCNA中最后的weight值.
 
 1. 首先读取数据并清洗
 
-```{r, echo=TRUE, eval=FALSE,cache=TRUE, warning=FALSE}
+
+```r
 library(WGCNA)
 library(tidyverse)
 femData <- 
@@ -106,7 +107,8 @@ colnames(femData) %>% head()
 
 然后将基因的描述列去掉.并且将其转置,得到的matrix行是样品,列是基因.
 
-```{r, echo=TRUE, eval=FALSE,cache=TRUE}
+
+```r
 data_exp0 <-
   as.data.frame(t(femData[, -c(1:8)]), stringsAsFactors = FALSE)
 colnames(data_exp0) = femData$substanceBXH
@@ -116,14 +118,16 @@ rownames(data_exp0) = colnames(femData)[-c(1:8)]
 然后需要去除掉数据(表达矩阵)中的outlier基因和样品.使用的是`goodSamplesGenes()`函数.
 
 
-```{r, echo=TRUE, eval=FALSE,cache=TRUE}
+
+```r
 gsg <- goodSamplesGenes(data_exp0, verbose = 3)
 gsg$allOK
 ```
 
 该函数用来检查数据中的基因是否符合要求,返回结果是一个list.如果`allOK`为TRUE,则代表通过检查,如果不是TRUE,则需要手动去除基因和样品:
 
-```{r, echo=TRUE, eval=FALSE,cache=TRUE}
+
+```r
 if (!gsg$allOK){
   # Remove the offending genes and samples from the data:
   data_exp0 <- data_exp0[gsg$goodSamples, gsg$goodGenes]
@@ -132,7 +136,8 @@ if (!gsg$allOK){
 
 我们可以使用数据对样品进行聚类,然后观察有哪些明显的outlier samples.
 
-```{r, echo=TRUE, eval=FALSE,cache=TRUE}
+
+```r
 sampleTree <- hclust(dist(data_exp0), method = "average")
 plot(
   sampleTree,
@@ -147,7 +152,8 @@ plot(
 
 我们可以设定剪枝的阈值,比如我们设置为15,然后使用`cutreeStatic()`函数对样品进行分类.
 
-```{r, echo=TRUE, eval=FALSE,cache=TRUE}
+
+```r
 # Determine cluster under the line
 clust = cutreeStatic(sampleTree, cutHeight = 15, minSize = 10)
 table(clust)
@@ -155,7 +161,8 @@ table(clust)
 
 可以明显的看到一个outlier sample(0).可以手动删除,也可以自动的办法.
 
-```{r, echo=TRUE, eval=FALSE,cache=TRUE}
+
+```r
 # clust 1 contains the samples we want to keep.
 keepSamples = which(clust == 1)
 datExpr = data_exp0[keepSamples,]
@@ -169,7 +176,8 @@ nSamples
 
 下面我们需要读取clinical data.后续需要使用clinical data和模块数据做分析.
 
-```{r, echo=TRUE, eval=FALSE,cache=TRUE}
+
+```r
 traitData <- read.csv("WGCNA_test/ClinicalTraits.csv")
 dim(traitData)
 names(traitData)
@@ -188,13 +196,15 @@ collectGarbage()
 
 这时候我们得到的`datTraits`就是clinicaldata,其中行为样品,列为变量.
 
-```{r, echo=TRUE, eval=FALSE,cache=TRUE}
+
+```r
 sum(rownames(datTraits) == rownames(datExpr))
 ```
 
 下面我们来看看样品的临床数据的热图和样品的基因的聚类.
 
-```{r, echo=TRUE, eval=FALSE,cache=TRUE}
+
+```r
 # Re-cluster samples
 sampleTree2 <- hclust(dist(datExpr), method = "average")
 # Convert traits to a color representation: white means low, red means high, grey means missing entry
@@ -208,7 +218,8 @@ plotDendroAndColors(dendro = sampleTree2,
 
 最后,把数据保存下来,准备后续的分析.
 
-```{r, echo=TRUE, eval=FALSE,cache=TRUE}
+
+```r
 save(datExpr, datTraits, file = "WGCNA_test/FemaleLiver-01-dataInput.RData")
 ```
 
@@ -218,7 +229,8 @@ save(datExpr, datTraits, file = "WGCNA_test/FemaleLiver-01-dataInput.RData")
 
 1. 首先需要设置R运行环境,主要是要能够进行多线程处理,然后读取数据:
 
-```{r, echo=TRUE, eval=FALSE,cache=TRUE}
+
+```r
 enableWGCNAThreads(nThreads = 6)
 # Load the data saved in the first part
 lnames = load(file = "WGCNA_test/FemaleLiver-01-dataInput.RData")
@@ -234,7 +246,8 @@ WGCNA的第一个重要参数,就是构建相邻矩阵是的power函数的参数
 
 > 注意,这段代码在Rstudio中不能运行,运行出错,需要到R自带IDE或者终端中运行.
 
-```{r, echo=TRUE, eval=FALSE,cache=TRUE}
+
+```r
 # Choose a set of soft-thresholding powers
 powers = c(c(1:10), seq(from = 12, to = 20, by = 2))
 # Call the network topology analysis function
@@ -243,7 +256,8 @@ save(sft, file = "WGCNA_test/sft")
 ```
 
 
-```{r, echo=TRUE, eval=FALSE,cache=TRUE, out.width="50%", fig.show="hold"}
+
+```r
 load("WGCNA_test/sft")
 powers = c(c(1:10), seq(from = 12, to = 20, by = 2))
 # Scale-free topology fit index as a function of the soft-thresholding power
@@ -278,7 +292,8 @@ sft$fitIndices %>%
 
 确定了power(β)参数之后,后面使用` blockwiseModules()`函数就可以得到modules.
 
-```{r, echo=TRUE, eval=FALSE,cache=TRUE}
+
+```r
 net <- blockwiseModules(
   datExpr,
   power = 6,
@@ -306,7 +321,8 @@ net <- blockwiseModules(
 
 下面看一下分类结果.
 
-```{r, echo=TRUE, eval=FALSE,cache=TRUE}
+
+```r
 names(net)
 table(net$colors)
 ```
@@ -315,7 +331,8 @@ table(net$colors)
 
 下面我们把module画出来.
 
-```{r, echo=TRUE, eval=FALSE,cache=TRUE}
+
+```r
 # Convert labels to colors for plotting
 mergedColors = labels2colors(net$colors)
 # Plot the dendrogram and the module colors underneath
@@ -332,7 +349,8 @@ plotDendroAndColors(
 
 然后将结果保存,用于后续的分析.
 
-```{r, echo=TRUE, eval=FALSE,cache=TRUE}
+
+```r
 moduleLabels = net$colors
 moduleColors = labels2colors(net$colors)
 MEs = net$MEs
@@ -347,7 +365,8 @@ save(MEs, moduleLabels, moduleColors, geneTree, net,
 
 首先加载上一步产生的数据:
 
-```{r, echo=TRUE, eval=FALSE,cache=TRUE}
+
+```r
 lnames = load(file = "WGCNA_test/FemaleLiver-01-dataInput.RData");
 #The variable lnames contains the names of loaded variables.
 lnames
@@ -360,7 +379,8 @@ lnames
 
  这个矩阵除了可以从最终的结果`net`中直接得到,还可以使用下面的函数`moduleEigengenes`得到.
  
-```{r, echo=TRUE, eval=FALSE,cache=TRUE}
+
+```r
 # Recalculate MEs with color labels
 MEs0 = moduleEigengenes(expr = datExpr, colors = moduleColors)$eigengenes
 MEs = orderMEs(MEs0)
@@ -368,7 +388,8 @@ MEs = orderMEs(MEs0)
 
 我们也可以把这个数据和从`net`中直接得到的对比看一下.
 
-```{r, echo=TRUE, eval=FALSE,cache=TRUE}
+
+```r
 test <- net$MEs
 data.frame(colnames(test), colnames(MEs), stringsAsFactors = FALSE) %>% 
   dplyr::distinct() %>% 
@@ -382,7 +403,8 @@ data.frame(moduleColors, net$colors, stringsAsFactors = FALSE) %>%
 
 然后我们使用`WGCNA`中的`cor`函数计算module和clinical data的相关性.
 
-```{r, echo=TRUE, eval=FALSE,cache=TRUE}
+
+```r
 # Define numbers of genes and samples
 nGenes = ncol(datExpr)
 nSamples = nrow(datExpr)
@@ -392,7 +414,8 @@ moduleTraitPvalue = corPvalueStudent(moduleTraitCor, nSamples)
 
 下面对correlation进行可视化:
 
-```{r, echo=TRUE, eval=FALSE,cache=TRUE}
+
+```r
 # Will display correlations and their p-values
 textMatrix = paste(signif(moduleTraitCor, 2), "\n(",
 signif(moduleTraitPvalue, 1), ")", sep = "")
@@ -416,7 +439,8 @@ main = paste("Module-trait relationships"))
 
 Gene relationship to trait and important modules: Gene Significance and Module Membership
 
-```{r, echo=TRUE, eval=FALSE,cache=TRUE}
+
+```r
 # Define variable weight containing the weight column of datTrait
 weight = as.data.frame(datTraits$weight_g)
 colnames(weight) = "weight"
@@ -437,7 +461,8 @@ names(GSPvalue) = paste("p.GS.", names(weight), sep = "")
 
 Intramodular analysis: identifying genes with high GS and MM
 
-```{r, echo=TRUE, eval=FALSE,cache=TRUE}
+
+```r
 module = "brown"
 column = match(module, modNames)
 moduleGenes = moduleColors==module
@@ -457,12 +482,14 @@ verboseScatterplot(
 
 Summary output of network analysis results
 
-```{r, echo=TRUE, eval=FALSE,cache=TRUE}
+
+```r
 head(names(datExpr))
 head(names(datExpr)[moduleColors=="brown"])
 ```
 
-```{r, echo=TRUE, eval=FALSE,cache=TRUE}
+
+```r
 annot <- 
   read.csv(file = "WGCNA_test/GeneAnnotation.csv")
 dim(annot)
@@ -473,7 +500,8 @@ probes2annot = match(probes, annot$substanceBXH)
 sum(is.na(probes2annot))
 ```
 
-``````{r, echo=TRUE, eval=FALSE,cache=TRUE}
+
+```r
 # Create the starting data frame
 geneInfo0 = data.frame(substanceBXH = probes,
 geneSymbol = annot$gene_symbol[probes2annot],

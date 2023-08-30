@@ -4,18 +4,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 13 功能化函数编程purrr | R for Bioinformatics project</title>
+<title>Chapter 11 功能化函数编程purrr | R for Bioinformatics project</title>
 <meta name="author" content="Xiaotao Shen">
-<meta name="description" content="purrr是R进行函数化编程(functional programing)的包.  13.1 安装 purrr包在tidyverse包中,所以可以直接通过安装tidyverse包进行安装.当然,也可以单独安装. # The easiest way to get purrr is to install the whole tidyverse:...">
+<meta name="description" content="purrr是R进行函数化编程(functional programing)的包.  11.1 安装 purrr包在tidyverse包中,所以可以直接通过安装tidyverse包进行安装.当然,也可以单独安装. # The easiest way to get purrr is to install the whole tidyverse:...">
 <meta name="generator" content="bookdown 0.34 with bs4_book()">
-<meta property="og:title" content="Chapter 13 功能化函数编程purrr | R for Bioinformatics project">
+<meta property="og:title" content="Chapter 11 功能化函数编程purrr | R for Bioinformatics project">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://jaspershen.github.io/r4bioinformatics/tidyverse_purrr.html">
 <meta property="og:image" content="https://jaspershen.github.io/r4bioinformatics/cover.png">
-<meta property="og:description" content="purrr是R进行函数化编程(functional programing)的包.  13.1 安装 purrr包在tidyverse包中,所以可以直接通过安装tidyverse包进行安装.当然,也可以单独安装. # The easiest way to get purrr is to install the whole tidyverse:...">
+<meta property="og:description" content="purrr是R进行函数化编程(functional programing)的包.  11.1 安装 purrr包在tidyverse包中,所以可以直接通过安装tidyverse包进行安装.当然,也可以单独安装. # The easiest way to get purrr is to install the whole tidyverse:...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 13 功能化函数编程purrr | R for Bioinformatics project">
-<meta name="twitter:description" content="purrr是R进行函数化编程(functional programing)的包.  13.1 安装 purrr包在tidyverse包中,所以可以直接通过安装tidyverse包进行安装.当然,也可以单独安装. # The easiest way to get purrr is to install the whole tidyverse:...">
+<meta name="twitter:title" content="Chapter 11 功能化函数编程purrr | R for Bioinformatics project">
+<meta name="twitter:description" content="purrr是R进行函数化编程(functional programing)的包.  11.1 安装 purrr包在tidyverse包中,所以可以直接通过安装tidyverse包进行安装.当然,也可以单独安装. # The easiest way to get purrr is to install the whole tidyverse:...">
 <meta name="twitter:image" content="https://jaspershen.github.io/r4bioinformatics/cover.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -55,18 +55,23 @@
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
 <li><a class="" href="index.html"><span class="header-section-number">1</span> Welcome</a></li>
+<li class="book-part">Project organization</li>
 <li><a class="" href="r4bioinformatics.html"><span class="header-section-number">2</span> R for Bioinformatics analysis</a></li>
+<li class="book-part">Markdown</li>
 <li><a class="" href="markdown.html"><span class="header-section-number">3</span> Markdown</a></li>
 <li><a class="" href="rmarkdown.html"><span class="header-section-number">4</span> Rmarkdown</a></li>
 <li><a class="" href="rmarkdown_beyond.html"><span class="header-section-number">5</span> Rmarkdown拓展</a></li>
+<li class="book-part">Git</li>
 <li><a class="" href="git.html"><span class="header-section-number">6</span> Git和github</a></li>
 <li><a class="" href="git_teamwork.html"><span class="header-section-number">7</span> github team work</a></li>
+<li class="book-part">Data visulization</li>
 <li><a class="" href="ggplot2.html"><span class="header-section-number">8</span> ggplot2</a></li>
 <li><a class="" href="network.html"><span class="header-section-number">9</span> Network分析总结</a></li>
 <li><a class="" href="tidyverse_stringr.html"><span class="header-section-number">10</span> Tidyverse用于数据分析stringr</a></li>
-<li><a class="" href="multiomics.html"><span class="header-section-number">11</span> 多组学分析</a></li>
+<li><a class="active" href="tidyverse_purrr.html"><span class="header-section-number">11</span> 功能化函数编程purrr</a></li>
 <li><a class="" href="regularexpression.html"><span class="header-section-number">12</span> 正则表达式</a></li>
-<li><a class="active" href="tidyverse_purrr.html"><span class="header-section-number">13</span> 功能化函数编程purrr</a></li>
+<li class="book-part">Bioinformatics</li>
+<li><a class="" href="multiomics.html"><span class="header-section-number">13</span> 多组学分析</a></li>
 <li><a class="" href="biostatistics.html"><span class="header-section-number">14</span> Modern Statistics for Modern Biology</a></li>
 <li><a class="" href="references.html">References</a></li>
 </ul>
@@ -76,17 +81,17 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="tidyverse_purrr" class="section level1" number="13">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="tidyverse_purrr" class="section level1" number="11">
 <h1>
-<span class="header-section-number">13</span> 功能化函数编程<code>purrr</code><a class="anchor" aria-label="anchor" href="#tidyverse_purrr"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11</span> 功能化函数编程<code>purrr</code><a class="anchor" aria-label="anchor" href="#tidyverse_purrr"><i class="fas fa-link"></i></a>
 </h1>
 <p><code>purrr</code>是R进行函数化编程(functional programing)的包.</p>
-<div id="安装-4" class="section level2" number="13.1">
+<div id="安装-4" class="section level2" number="11.1">
 <h2>
-<span class="header-section-number">13.1</span> 安装<a class="anchor" aria-label="anchor" href="#%E5%AE%89%E8%A3%85-4"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.1</span> 安装<a class="anchor" aria-label="anchor" href="#%E5%AE%89%E8%A3%85-4"><i class="fas fa-link"></i></a>
 </h2>
 <p><code>purrr</code>包在<code>tidyverse</code>包中,所以可以直接通过安装<code>tidyverse</code>包进行安装.当然,也可以单独安装.</p>
-<div class="sourceCode" id="cb199"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb166"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># The easiest way to get purrr is to install the whole tidyverse:</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"tidyverse"</span><span class="op">)</span></span>
 <span></span>
@@ -97,20 +102,20 @@
 <span><span class="co"># install.packages("devtools")</span></span>
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"tidyverse/purrr"</span><span class="op">)</span></span></code></pre></div>
 </div>
-<div id="map函数系列" class="section level2" number="13.2">
+<div id="map函数系列" class="section level2" number="11.2">
 <h2>
-<span class="header-section-number">13.2</span> <code>map</code>函数系列<a class="anchor" aria-label="anchor" href="#map%E5%87%BD%E6%95%B0%E7%B3%BB%E5%88%97"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.2</span> <code>map</code>函数系列<a class="anchor" aria-label="anchor" href="#map%E5%87%BD%E6%95%B0%E7%B3%BB%E5%88%97"><i class="fas fa-link"></i></a>
 </h2>
 <p><code>purrr</code>包提供了很多<code>map</code>系列的函数,跟R的base apply家族函数有点像,都是对向量化的对象的每一个元素进行处理.<code>map(.x, .f)</code>,其中<code>.x</code>是向量化的对象,比如向量,list等,然后对每一个元素使用<code>.f</code>函数进行处理,得到结果之后会返回一个跟原来<code>.x</code>长度相同的对象.返回对象的格式跟<code>map</code>函数的后缀有关,比如<code>_lgl</code>,<code>_chr()</code>等.</p>
 <blockquote>
 <p>在R中,向量包括两类,atomic和list,二者区别在于前者的元素类型必须相同,而后者可以不同,前者的代表为向量和矩阵,而后者为list和数据框.</p>
 </blockquote>
 <p>比如<code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code>函数,用法如下:</p>
-<div class="sourceCode" id="cb200"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb167"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="va">.x</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
 <p><code>.x</code>是第一个参数,是一个list或者一个<code>atomic vector</code>.<code>.f</code>是一个函数,一个公式或者是向量.<code>...</code>则是函数的其他参数.</p>
 <p>我们举个例子:</p>
-<div class="sourceCode" id="cb201"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb168"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="co">#&gt; ── Attaching core tidyverse packages ──── tidyverse 2.0.0 ──</span></span>
 <span><span class="co">#&gt; ✔ dplyr     1.1.2     ✔ readr     2.1.4</span></span>
@@ -125,51 +130,51 @@
 <span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="va">rnorm</span>, mean <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [[1]]</span></span>
-<span><span class="co">#&gt; [1] 5.245912</span></span>
+<span><span class="co">#&gt; [1] 4.091689</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[2]]</span></span>
-<span><span class="co">#&gt; [1] 1.528066 2.986734</span></span>
+<span><span class="co">#&gt; [1] 2.421059 4.753699</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[3]]</span></span>
-<span><span class="co">#&gt; [1] 3.7782173 3.1711538 0.5922197</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 3.600798 3.470027 1.490179</span></span></code></pre></div>
 <p>这时候<code>.x</code>是一个向量.函数是<code>rnorm</code>.如果不对函数进行特别说明,则向量的每个元素默认都是函数的第一个参数,然后后面的参数是其他参数.如果在后面对第一参数进行设置,这时候前面的向量则按顺序向后移动.比如:</p>
-<div class="sourceCode" id="cb202"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb169"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="va">rnorm</span>, n <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [[1]]</span></span>
-<span><span class="co">#&gt; [1]  1.770773 -0.883499  2.069894</span></span>
+<span><span class="co">#&gt; [1] 0.5318611 1.7728080 2.8020710</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[2]]</span></span>
-<span><span class="co">#&gt; [1] 1.795669 1.890548 1.202950</span></span>
+<span><span class="co">#&gt; [1] 1.503078 1.265108 1.206609</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[3]]</span></span>
-<span><span class="co">#&gt; [1] 1.207715 1.400057 3.971091</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 2.956641 3.431411 2.308549</span></span></code></pre></div>
 <p>这时候,因为在后面设置了<code>n = 3</code>,因此这时候向量就是<code>rnorm</code>的第二个参数mean了.</p>
 <p>对于比较复杂的参数,不太推荐这样的写法,更推荐使用匿名函数,然后将参数位置进行固定:</p>
-<div class="sourceCode" id="cb203"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb170"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span>.x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, .f <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">3</span>, mean <span class="op">=</span> <span class="va">x</span><span class="op">)</span><span class="op">}</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [[1]]</span></span>
-<span><span class="co">#&gt; [1] 2.445230 1.761792 2.122510</span></span>
+<span><span class="co">#&gt; [1] -0.3011655  1.1711510  1.1889051</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[2]]</span></span>
-<span><span class="co">#&gt; [1] 2.321425 1.726930 2.684708</span></span>
+<span><span class="co">#&gt; [1] 3.733329 1.705238 1.799918</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[3]]</span></span>
-<span><span class="co">#&gt; [1] 4.116747 3.490825 3.264808</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 2.931826 4.108102 2.611456</span></span></code></pre></div>
 <p>当然,也可以是一个公式:</p>
-<div class="sourceCode" id="cb204"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb171"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span>.x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">3</span>, mean <span class="op">=</span> <span class="va">.x</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [[1]]</span></span>
-<span><span class="co">#&gt; [1] 0.7689384 0.9160738 0.5829471</span></span>
+<span><span class="co">#&gt; [1] 2.069497 3.040783 1.814557</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[2]]</span></span>
-<span><span class="co">#&gt; [1] 0.7865884 1.4290659 1.6078502</span></span>
+<span><span class="co">#&gt; [1]  3.1034905 -0.2086491  0.5570305</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[3]]</span></span>
-<span><span class="co">#&gt; [1] 3.703991 3.724092 2.606857</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 2.321412 3.709581 3.655788</span></span></code></pre></div>
 <p>这时候参数需要使用<code>.x</code>作为占位符.</p>
 <p>对于数据框来说,其实也可以看做是一个list,每一列就是一个list中的一个元素.</p>
-<div class="sourceCode" id="cb205"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb172"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">16</span>, nrow <span class="op">=</span> <span class="fl">4</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">df</span></span>
@@ -191,7 +196,7 @@
 <span><span class="co">#&gt; $V4</span></span>
 <span><span class="co">#&gt; [1] 14.5</span></span></code></pre></div>
 <p>也可以做一些复杂的运算,比如进行scale.</p>
-<div class="sourceCode" id="cb206"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb173"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">16</span>, nrow <span class="op">=</span> <span class="fl">4</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">df</span></span>
@@ -212,7 +217,7 @@
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $V4</span></span>
 <span><span class="co">#&gt; [1] -1.1618950 -0.3872983  0.3872983  1.1618950</span></span></code></pre></div>
-<div class="sourceCode" id="cb207"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb174"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rlang.r-lib.org/reference/set_names.html">set_names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"foo"</span>, <span class="st">"bar"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="va">paste0</span>, <span class="st">":suffix"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $foo</span></span>
 <span><span class="co">#&gt; [1] "foo:suffix"</span></span>
@@ -224,7 +229,7 @@
 <li>
 <code><a href="https://purrr.tidyverse.org/reference/map.html">map_lgl()</a></code>, <code><a href="https://purrr.tidyverse.org/reference/map.html">map_int()</a></code>, <code><a href="https://purrr.tidyverse.org/reference/map.html">map_dbl()</a></code>和<code><a href="https://purrr.tidyverse.org/reference/map.html">map_chr()</a></code>返回的分别是logical,integer,dbl和character类型的数据.</li>
 </ul>
-<div class="sourceCode" id="cb208"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb175"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">l1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fl">1L</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>a <span class="op">=</span> <span class="cn">NULL</span>, b <span class="op">=</span> <span class="fl">2L</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>b <span class="op">=</span> <span class="fl">3L</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span>.x <span class="op">=</span> <span class="va">l1</span>, .f <span class="op">=</span> <span class="st">"a"</span>, .default <span class="op">=</span> <span class="st">"???"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [[1]]</span></span>
@@ -236,12 +241,12 @@
 <span><span class="co">#&gt; [[3]]</span></span>
 <span><span class="co">#&gt; [1] "???"</span></span></code></pre></div>
 <p>另外,函数还可以是一个列名或者向量某个元素的名字,也就是使用位置参数对其进行提取.比如上面的例子,就是使用函数”a”,也就是提取对象中名字为”a”的元素的名字,其实也就是函数<code>[[</code>,如果没有该元素,则使用函数<code>.default</code>的值进行填充.当然,还可以使用位置来进行提取.</p>
-<div class="sourceCode" id="cb209"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb176"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">l1</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_int</a></span><span class="op">(</span><span class="st">"b"</span>, .default <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] NA  2  3</span></span>
 <span><span class="va">l1</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map_int</a></span><span class="op">(</span><span class="fl">2</span>, .default <span class="op">=</span> <span class="cn">NA</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] NA  2 NA</span></span></code></pre></div>
-<div class="sourceCode" id="cb210"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb177"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> </span>
 <span><span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/split.html">split</a></span><span class="op">(</span><span class="va">.</span><span class="op">$</span><span class="va">cyl</span><span class="op">)</span></span>
@@ -269,53 +274,53 @@
 </ul>
 <p>这两个函数其实就是将<code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code>返回的list对象整理为data frame对象.分别按照行和列进行整合.</p>
 <p>举个例子:</p>
-<div class="sourceCode" id="cb211"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb178"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">20</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">4</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="va">df</span></span>
 <span><span class="co">#&gt;   V1 V2 V3 V4 V5</span></span>
-<span><span class="co">#&gt; 1  6  8  9 19 17</span></span>
-<span><span class="co">#&gt; 2 14 11  1 12 16</span></span>
-<span><span class="co">#&gt; 3 10  7  4  3  5</span></span>
-<span><span class="co">#&gt; 4 18 20  2 13 15</span></span>
+<span><span class="co">#&gt; 1  8 14 15 19  1</span></span>
+<span><span class="co">#&gt; 2  7 10  2 18  4</span></span>
+<span><span class="co">#&gt; 3  9  3 20 12  6</span></span>
+<span><span class="co">#&gt; 4 13  5 17 16 11</span></span>
 <span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span>.x <span class="op">=</span> <span class="va">df</span>, .f <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span><span class="op">(</span><span class="va">x</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">}</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $V1</span></span>
-<span><span class="co">#&gt; [1] -1.1618950  0.3872983 -0.3872983  1.1618950</span></span>
+<span><span class="co">#&gt; [1] -0.47529319 -0.85552774 -0.09505864  1.42587956</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $V2</span></span>
-<span><span class="co">#&gt; [1] -0.59160798 -0.08451543 -0.76063883  1.43676223</span></span>
+<span><span class="co">#&gt; [1]  1.2080809  0.4026936 -1.0067341 -0.6040404</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $V3</span></span>
-<span><span class="co">#&gt; [1]  1.4048787 -0.8429272  0.0000000 -0.5619515</span></span>
+<span><span class="co">#&gt; [1]  0.1889822 -1.4488638  0.8189230  0.4409586</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $V4</span></span>
-<span><span class="co">#&gt; [1]  1.09819076  0.03786865 -1.32540264  0.18934323</span></span>
+<span><span class="co">#&gt; [1]  0.88833014  0.56530100 -1.37287385 -0.08075729</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $V5</span></span>
-<span><span class="co">#&gt; [1]  0.6744270  0.4945798 -1.4837394  0.3147326</span></span>
+<span><span class="co">#&gt; [1] -1.0706196 -0.3568732  0.1189577  1.3085351</span></span>
 <span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map_dfr.html">map_dfr</a></span><span class="op">(</span>.x <span class="op">=</span> <span class="va">df</span>, .f <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span><span class="op">(</span><span class="va">x</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">}</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 4 × 5</span></span>
-<span><span class="co">#&gt;       V1      V2     V3      V4     V5</span></span>
-<span><span class="co">#&gt;    &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 -1.16  -0.592   1.40   1.10    0.674</span></span>
-<span><span class="co">#&gt; 2  0.387 -0.0845 -0.843  0.0379  0.495</span></span>
-<span><span class="co">#&gt; 3 -0.387 -0.761   0     -1.33   -1.48 </span></span>
-<span><span class="co">#&gt; 4  1.16   1.44   -0.562  0.189   0.315</span></span>
+<span><span class="co">#&gt;        V1     V2     V3      V4     V5</span></span>
+<span><span class="co">#&gt;     &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 -0.475   1.21   0.189  0.888  -1.07 </span></span>
+<span><span class="co">#&gt; 2 -0.856   0.403 -1.45   0.565  -0.357</span></span>
+<span><span class="co">#&gt; 3 -0.0951 -1.01   0.819 -1.37    0.119</span></span>
+<span><span class="co">#&gt; 4  1.43   -0.604  0.441 -0.0808  1.31</span></span>
 <span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map_dfr.html">map_dfc</a></span><span class="op">(</span>.x <span class="op">=</span> <span class="va">df</span>, .f <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span><span class="op">(</span><span class="va">x</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">}</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 4 × 5</span></span>
-<span><span class="co">#&gt;       V1      V2     V3      V4     V5</span></span>
-<span><span class="co">#&gt;    &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1 -1.16  -0.592   1.40   1.10    0.674</span></span>
-<span><span class="co">#&gt; 2  0.387 -0.0845 -0.843  0.0379  0.495</span></span>
-<span><span class="co">#&gt; 3 -0.387 -0.761   0     -1.33   -1.48 </span></span>
-<span><span class="co">#&gt; 4  1.16   1.44   -0.562  0.189   0.315</span></span></code></pre></div>
+<span><span class="co">#&gt;        V1     V2     V3      V4     V5</span></span>
+<span><span class="co">#&gt;     &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 -0.475   1.21   0.189  0.888  -1.07 </span></span>
+<span><span class="co">#&gt; 2 -0.856   0.403 -1.45   0.565  -0.357</span></span>
+<span><span class="co">#&gt; 3 -0.0951 -1.01   0.819 -1.37    0.119</span></span>
+<span><span class="co">#&gt; 4  1.43   -0.604  0.441 -0.0808  1.31</span></span></code></pre></div>
 <ul>
 <li>
 <code><a href="https://purrr.tidyverse.org/reference/map.html">walk()</a></code>函数,称之为游走函数</li>
 </ul>
 <p>当使用函数的目的是向屏幕提供输出或将文件保存到磁盘——重要的是操作过程而不是返回值，我们应该使用游走函数，而不是映射函数。</p>
 <p>比如最简单的例子:</p>
-<div class="sourceCode" id="cb212"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb179"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">walk</a></span><span class="op">(</span>.x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, .f <span class="op">=</span> <span class="va">print</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 1</span></span>
 <span><span class="co">#&gt; [1] 2</span></span>
@@ -329,18 +334,18 @@
 <span><span class="co">#&gt; [1] 10</span></span></code></pre></div>
 <p>另外一种是保存文件到本地.这时候就可以使用<code>walk</code>函数.</p>
 </div>
-<div id="map变种函数" class="section level2" number="13.3">
+<div id="map变种函数" class="section level2" number="11.3">
 <h2>
-<span class="header-section-number">13.3</span> <code>map</code>变种函数<a class="anchor" aria-label="anchor" href="#map%E5%8F%98%E7%A7%8D%E5%87%BD%E6%95%B0"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.3</span> <code>map</code>变种函数<a class="anchor" aria-label="anchor" href="#map%E5%8F%98%E7%A7%8D%E5%87%BD%E6%95%B0"><i class="fas fa-link"></i></a>
 </h2>
 <p>和<code><a href="https://purrr.tidyverse.org/reference/map.html">map()</a></code>函数类似,<code>purrr</code>提供了一系列<code>map</code>函数的变种函数.</p>
-<div id="map2系列函数" class="section level3" number="13.3.1">
+<div id="map2系列函数" class="section level3" number="11.3.1">
 <h3>
-<span class="header-section-number">13.3.1</span> <code>map2</code>系列函数<a class="anchor" aria-label="anchor" href="#map2%E7%B3%BB%E5%88%97%E5%87%BD%E6%95%B0"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.3.1</span> <code>map2</code>系列函数<a class="anchor" aria-label="anchor" href="#map2%E7%B3%BB%E5%88%97%E5%87%BD%E6%95%B0"><i class="fas fa-link"></i></a>
 </h3>
 <p><code><a href="https://purrr.tidyverse.org/reference/map2.html">map2()</a></code>可以多提供一个输入变量.然后对其同时进行处理.</p>
 <p>用法如下:</p>
-<div class="sourceCode" id="cb213"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb180"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map2.html">map2</a></span><span class="op">(</span><span class="va">.x</span>, <span class="va">.y</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map2.html">map2_lgl</a></span><span class="op">(</span><span class="va">.x</span>, <span class="va">.y</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span></span>
@@ -358,7 +363,7 @@
 <span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map_dfr.html">map2_dfc</a></span><span class="op">(</span><span class="va">.x</span>, <span class="va">.y</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
 <p><code>.x</code>和<code>.y</code>是两个长度相等的向量.如果其中一个长度为1,那么会对其进行循环.<code>.f</code>还是对向量进行处理的函数.</p>
 <p>举个例子:</p>
-<div class="sourceCode" id="cb214"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb181"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">10</span>, <span class="fl">100</span><span class="op">)</span></span>
 <span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">3</span><span class="op">)</span></span>
 <span><span class="va">z</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">50</span>, <span class="fl">500</span><span class="op">)</span></span>
@@ -381,12 +386,12 @@
 <span><span class="co">#&gt; [[3]]</span></span>
 <span><span class="co">#&gt; [1] 103</span></span></code></pre></div>
 </div>
-<div id="pmap和pwalk系列函数" class="section level3" number="13.3.2">
+<div id="pmap和pwalk系列函数" class="section level3" number="11.3.2">
 <h3>
-<span class="header-section-number">13.3.2</span> <code>pmap</code>和<code>pwalk</code>系列函数<a class="anchor" aria-label="anchor" href="#pmap%E5%92%8Cpwalk%E7%B3%BB%E5%88%97%E5%87%BD%E6%95%B0"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.3.2</span> <code>pmap</code>和<code>pwalk</code>系列函数<a class="anchor" aria-label="anchor" href="#pmap%E5%92%8Cpwalk%E7%B3%BB%E5%88%97%E5%87%BD%E6%95%B0"><i class="fas fa-link"></i></a>
 </h3>
 <p><code><a href="https://purrr.tidyverse.org/reference/pmap.html">pmap()</a></code>和<code><a href="https://purrr.tidyverse.org/reference/pmap.html">pwalk()</a></code>比较特殊,他们用法如下:</p>
-<div class="sourceCode" id="cb215"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb182"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pmap.html">pmap</a></span><span class="op">(</span><span class="va">.l</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pmap.html">pmap_lgl</a></span><span class="op">(</span><span class="va">.l</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span></span>
@@ -406,7 +411,7 @@
 <span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pmap.html">pwalk</a></span><span class="op">(</span><span class="va">.l</span>, <span class="va">.f</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
 <p>其中<code>.l</code>是指一个列表(list).长度可以为任意值.如果输入的是一个data frame,那么他们是按照行进行处理的.这时候需要和<code>map</code>系列函数区分,以为他们是按照列进行处理的.</p>
 <p>比如下面的例子:</p>
-<div class="sourceCode" id="cb216"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb183"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pmap.html">pmap</a></span><span class="op">(</span>.l <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">z</span><span class="op">)</span>, .f <span class="op">=</span> <span class="va">sum</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [[1]]</span></span>
 <span><span class="co">#&gt; [1] 7</span></span>
@@ -417,7 +422,7 @@
 <span><span class="co">#&gt; [[3]]</span></span>
 <span><span class="co">#&gt; [1] 603</span></span></code></pre></div>
 <p>分别将x,y和z的第一个元素,第二个元素和第三个元素相加得到最终的结果.</p>
-<div class="sourceCode" id="cb217"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb184"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pmap.html">pmap</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span>, <span class="va">z</span><span class="op">)</span>, <span class="kw">function</span><span class="op">(</span><span class="va">a</span>, <span class="va">b</span>, <span class="va">c</span><span class="op">)</span> <span class="va">a</span> <span class="op">/</span> <span class="op">(</span><span class="va">b</span> <span class="op">+</span> <span class="va">c</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [[1]]</span></span>
 <span><span class="co">#&gt; [1] 0.1666667</span></span>
@@ -456,26 +461,26 @@ Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="regularexpression.html"><span class="header-section-number">12</span> 正则表达式</a></div>
-<div class="next"><a href="biostatistics.html"><span class="header-section-number">14</span> Modern Statistics for Modern Biology</a></div>
+<div class="prev"><a href="tidyverse_stringr.html"><span class="header-section-number">10</span> Tidyverse用于数据分析stringr</a></div>
+<div class="next"><a href="regularexpression.html"><span class="header-section-number">12</span> 正则表达式</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#tidyverse_purrr"><span class="header-section-number">13</span> 功能化函数编程purrr</a></li>
-<li><a class="nav-link" href="#%E5%AE%89%E8%A3%85-4"><span class="header-section-number">13.1</span> 安装</a></li>
-<li><a class="nav-link" href="#map%E5%87%BD%E6%95%B0%E7%B3%BB%E5%88%97"><span class="header-section-number">13.2</span> map函数系列</a></li>
+<li><a class="nav-link" href="#tidyverse_purrr"><span class="header-section-number">11</span> 功能化函数编程purrr</a></li>
+<li><a class="nav-link" href="#%E5%AE%89%E8%A3%85-4"><span class="header-section-number">11.1</span> 安装</a></li>
+<li><a class="nav-link" href="#map%E5%87%BD%E6%95%B0%E7%B3%BB%E5%88%97"><span class="header-section-number">11.2</span> map函数系列</a></li>
 <li>
-<a class="nav-link" href="#map%E5%8F%98%E7%A7%8D%E5%87%BD%E6%95%B0"><span class="header-section-number">13.3</span> map变种函数</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#map2%E7%B3%BB%E5%88%97%E5%87%BD%E6%95%B0"><span class="header-section-number">13.3.1</span> map2系列函数</a></li>
-<li><a class="nav-link" href="#pmap%E5%92%8Cpwalk%E7%B3%BB%E5%88%97%E5%87%BD%E6%95%B0"><span class="header-section-number">13.3.2</span> pmap和pwalk系列函数</a></li>
+<a class="nav-link" href="#map%E5%8F%98%E7%A7%8D%E5%87%BD%E6%95%B0"><span class="header-section-number">11.3</span> map变种函数</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#map2%E7%B3%BB%E5%88%97%E5%87%BD%E6%95%B0"><span class="header-section-number">11.3.1</span> map2系列函数</a></li>
+<li><a class="nav-link" href="#pmap%E5%92%8Cpwalk%E7%B3%BB%E5%88%97%E5%87%BD%E6%95%B0"><span class="header-section-number">11.3.2</span> pmap和pwalk系列函数</a></li>
 </ul>
 </li>
 </ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/jaspershen/r4bioinformatics/blob/main/13-tidyverse_purrr.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/jaspershen/r4bioinformatics/edit/main/13-tidyverse_purrr.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/jaspershen/r4bioinformatics/blob/main/10-tidyverse_purrr.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/jaspershen/r4bioinformatics/edit/main/10-tidyverse_purrr.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>
