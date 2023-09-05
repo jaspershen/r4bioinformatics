@@ -1,7 +1,7 @@
 --- 
 title: "R for Bioinformatics project"
 author: "Xiaotao Shen"
-date: "2020-8-30 and updated on 2023-08-30"
+date: "2020-8-30 and updated on 2023-09-05"
 site: bookdown::bookdown_site
 documentclass: book
 output: bookdown::bs4_book
@@ -16,11 +16,9 @@ biblio-style: apalike
 csl: chicago-fullnote-bibliography.csl
 ---
 
-# Welcome
-
+# Preface
 
 这本书用来系统记录在学习过程中的遇到的问题,学到的知识.
-
 
 You can contact me via the social websites below:
 
@@ -28,18 +26,18 @@ You can contact me via the social websites below:
 
 <a href="https://github.com/jaspershen" target='_blank'><i class="fa fa-github"> GitHub</i></a> 
 
-<a href="https://jaspershen.github.io/image/wechat_QR.jpg" target='_blank'><i class="fa fa-weixin"> Wechat</i></a> 
+<a href="https://jaspershen.github.io/image/wechat_QR.jpg" target='_blank'><i class="fa fa-weixin"> WeChat</i></a> 
 
 <a href="https://www.shenxt.info/files/qq_QR.jpg" target='_blank'><i class="fa fa-qq"> QQ</i></a> 
 
-<a href="shenxt@stanford.edu" target='_blank'><i class="fa fa-envelope">  shenxt at stanford.edu</i></a> 
+<a href="shenxt@stanford.edu" target='_blank'><i class="fa fa-envelope"> shenxt@ stanford.edu</i></a> 
 
-<a href="https://www.linkedin.com/in/shenxt/" target='_blank'><i class="fa fa-linkedin"> Linkedin</i></a>
+<a href="https://www.linkedin.com/in/shenxt/" target='_blank'><i class="fa fa-linkedin"> LinkedIn</i></a>
 
 
 ```{=html}
-<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-04fb7a84256256a65d9a" style="width:672px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-04fb7a84256256a65d9a">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addPopups","args":[37.432748,-122.176758,"My office is <b>M339, Alway Building, Cooper Lane, Palo Alto, CA 94304",null,null,{"maxWidth":300,"minWidth":50,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]}],"setView":[[37.432748,-122.176758],17,[]],"limits":{"lat":[37.432748,37.432748],"lng":[-122.176758,-122.176758]}},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-16b742478e7cc770f958" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-16b742478e7cc770f958">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org\">OpenStreetMap<\/a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA<\/a>"}]},{"method":"addPopups","args":[37.432748,-122.176758,"My office is <b>M339, Alway Building, Cooper Lane, Palo Alto, CA 94304",null,null,{"maxWidth":300,"minWidth":50,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]}],"setView":[[37.432748,-122.176758],17,[]],"limits":{"lat":[37.432748,37.432748],"lng":[-122.176758,-122.176758]}},"evals":[],"jsHooks":[]}</script>
 ```
 
 

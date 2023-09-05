@@ -16,11 +16,9 @@ biblio-style: apalike
 csl: chicago-fullnote-bibliography.csl
 ---
 
-# Welcome
-
+# Preface
 
 这本书用来系统记录在学习过程中的遇到的问题,学到的知识.
-
 
 You can contact me via the social websites below:
 
@@ -28,13 +26,13 @@ You can contact me via the social websites below:
 
 <a href="https://github.com/jaspershen" target='_blank'><i class="fa fa-github"> GitHub</i></a> 
 
-<a href="https://jaspershen.github.io/image/wechat_QR.jpg" target='_blank'><i class="fa fa-weixin"> Wechat</i></a> 
+<a href="https://jaspershen.github.io/image/wechat_QR.jpg" target='_blank'><i class="fa fa-weixin"> WeChat</i></a> 
 
 <a href="https://www.shenxt.info/files/qq_QR.jpg" target='_blank'><i class="fa fa-qq"> QQ</i></a> 
 
-<a href="shenxt@stanford.edu" target='_blank'><i class="fa fa-envelope">  shenxt at stanford.edu</i></a> 
+<a href="shenxt@stanford.edu" target='_blank'><i class="fa fa-envelope"> shenxt@ stanford.edu</i></a> 
 
-<a href="https://www.linkedin.com/in/shenxt/" target='_blank'><i class="fa fa-linkedin"> Linkedin</i></a>
+<a href="https://www.linkedin.com/in/shenxt/" target='_blank'><i class="fa fa-linkedin"> LinkedIn</i></a>
 
 ```{r, eval = TRUE, echo = FALSE}
 library(leaflet)

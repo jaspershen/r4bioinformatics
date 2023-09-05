@@ -1,4 +1,4 @@
-welcome
+preface
 r4bioinformatics
 markdown语法
 markdown
@@ -166,3 +166,7 @@ network-analysis-of-liver-expression-data-in-female-mice
 relating-modules-to-external-information-and-identifying-important
 对module进行分析
 biostatistics
+introduction
+build-and-preview
+introduction-1
+build-and-preview-1
