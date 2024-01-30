@@ -18,7 +18,7 @@ csl: chicago-fullnote-bibliography.csl
 
 # Preface
 
-这本书用来系统记录在学习过程中的遇到的问题,学到的知识.
+This book is used to systematically record the problems encountered and the knowledge learned during the learning process.
 
 You can contact me via the social websites below:
 
@@ -36,8 +36,8 @@ You can contact me via the social websites below:
 
 
 ```{=html}
-<div class="leaflet html-widget html-fill-item" id="htmlwidget-db78c9a4c419c5848c63" style="width:672px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-db78c9a4c419c5848c63">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addPopups","args":[37.432748,-122.176758,"My office is <b>M339, Alway Building, Cooper Lane, Palo Alto, CA 94304",null,null,{"maxWidth":300,"minWidth":50,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]}],"setView":[[37.432748,-122.176758],17,[]],"limits":{"lat":[37.432748,37.432748],"lng":[-122.176758,-122.176758]}},"evals":[],"jsHooks":[]}</script>
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-cd9bd24be369a384e1ee" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-cd9bd24be369a384e1ee">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addPopups","args":[37.432748,-122.176758,"My office is <b>M339, Alway Building, Cooper Lane, Palo Alto, CA 94304",null,null,{"maxWidth":300,"minWidth":50,"autoPan":true,"keepInView":false,"closeButton":true,"className":""}]}],"setView":[[37.432748,-122.176758],17,[]],"limits":{"lat":[37.432748,37.432748],"lng":[-122.176758,-122.176758]}},"evals":[],"jsHooks":[]}</script>
 ```
 
 

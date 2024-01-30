@@ -1,8 +1,8 @@
 preface
 r4bioinformatics
-markdown语法
+markdown-syntax
 markdown
-markdown语法-1
+markdown语法
 标题-header
 图片-image
 链接-links

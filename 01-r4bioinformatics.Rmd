@@ -6,14 +6,13 @@ knitr::opts_chunk$set(echo = TRUE, out.width = "100%")
 
 # R for Bioinformatics analysis {#r4bioinformatics}
 
-首先从`Markdown`的基础语法开始.
+First, let's start with the basic syntax of `Markdown`.
 
-## Markdown语法
+## Markdown Syntax
 
-markdown语法一般是使用符号转变为特殊格式.这样,看起来markdown文件都是plain text(纯文本),但是渲染之后,就可以得到特殊格式的文件了.
+Markdown syntax is generally used to convert plain text into special formatting. This way, markdown files appear as plain text, but once rendered, they can have special formatting.
 
-很多语法没有必要记住,只需要记住大概常用的几个就好,遇到不会的,直接google就可以.
-
+There's no need to remember all the syntax, just remember a few commonly used ones. If you encounter something you don't know, simply google it.
 
 ---
 

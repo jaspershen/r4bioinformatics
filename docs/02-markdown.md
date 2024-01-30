@@ -4,17 +4,17 @@
 
 # Markdown {#markdown}
 
-首先从`Markdown`的基础语法开始.
+First, let's start with the basic syntax of `Markdown`.
 
 ## Markdown语法
 
-markdown语法一般是使用符号转变为特殊格式.这样,看起来markdown文件都是plain text(纯文本),但是渲染之后,就可以得到特殊格式的文件了.
+Markdown syntax is generally used to convert plain text into special formats. This way, markdown files appear as plain text, but once rendered, they can be displayed in special formats.
 
-很多语法没有必要记住,只需要记住大概常用的几个就好,遇到不会的,直接google就可以.
+It is not necessary to remember all the syntax, just knowing a few commonly used ones is enough. If you encounter something you don't know, simply search for it on Google.
 
 ## 标题 (Header)
 
-Markdown一共支持六级标题.
+Markdown supports six levels of headers.
 
 语法:
 
@@ -470,8 +470,8 @@ DT::datatable(
 
 
 ```{=html}
-<div class="datatables html-widget html-fill-item" id="htmlwidget-861d423531291c264638" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-861d423531291c264638">{"x":{"filter":"none","vertical":false,"fillContainer":true,"data":[["1","2","3","4","5","6","7","8","9","10"],[5.1,4.9,4.7,4.6,5,5.4,4.6,5,4.4,4.9],[3.5,3,3.2,3.1,3.6,3.9,3.4,3.4,2.9,3.1],[1.4,1.4,1.3,1.5,1.4,1.7,1.4,1.5,1.4,1.5],[0.2,0.2,0.2,0.2,0.2,0.4,0.3,0.2,0.2,0.1],["setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa"]],"container":"<table class=\"display fill-container\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Sepal.Length<\/th>\n      <th>Sepal.Width<\/th>\n      <th>Petal.Length<\/th>\n      <th>Petal.Width<\/th>\n      <th>Species<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":4,"columnDefs":[{"className":"dt-right","targets":[1,2,3,4]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Sepal.Length","targets":1},{"name":"Sepal.Width","targets":2},{"name":"Petal.Length","targets":3},{"name":"Petal.Width","targets":4},{"name":"Species","targets":5}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[4,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-325bcbdba0af76977941" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-325bcbdba0af76977941">{"x":{"filter":"none","vertical":false,"fillContainer":true,"data":[["1","2","3","4","5","6","7","8","9","10"],[5.1,4.9,4.7,4.6,5,5.4,4.6,5,4.4,4.9],[3.5,3,3.2,3.1,3.6,3.9,3.4,3.4,2.9,3.1],[1.4,1.4,1.3,1.5,1.4,1.7,1.4,1.5,1.4,1.5],[0.2,0.2,0.2,0.2,0.2,0.4,0.3,0.2,0.2,0.1],["setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa","setosa"]],"container":"<table class=\"display fill-container\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Sepal.Length<\/th>\n      <th>Sepal.Width<\/th>\n      <th>Petal.Length<\/th>\n      <th>Petal.Width<\/th>\n      <th>Species<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":4,"columnDefs":[{"className":"dt-right","targets":[1,2,3,4]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Sepal.Length","targets":1},{"name":"Sepal.Width","targets":2},{"name":"Petal.Length","targets":3},{"name":"Petal.Width","targets":4},{"name":"Species","targets":5}],"order":[],"autoWidth":false,"orderClasses":false,"lengthMenu":[4,10,25,50,100]}},"evals":[],"jsHooks":[]}</script>
 ```
 
 
